@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 520" role="img" aria-labelledby="t">
+  <title id="t">A teacher at the chalkboard — illustrated, a placeholder for a real photograph</title>
+  <defs>
+    <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a4dbf8"/><stop offset=".6" stop-color="#e4f3fc"/><stop offset="1" stop-color="#f4eedd"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#f8cd7a" stop-opacity=".8"/><stop offset="1" stop-color="#f8cd7a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bd" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d6fa8"/><stop offset="1" stop-color="#0a3a5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="520" fill="url(#sk)"/>
+  <circle cx="100" cy="150" r="140" fill="url(#glow)"/>
+  <path d="M-10 446q215-58 440 0v80H-10z" fill="#fbf8ec" opacity=".92"/>
+  <path d="M-10 480q215-44 440 0v80H-10z" fill="#efe8d4"/>
+  <!-- chalkboard -->
+  <g>
+    <rect x="232" y="148" width="146" height="196" rx="8" fill="url(#bd)" stroke="#08334f" stroke-width="6"/>
+    <rect x="250" y="166" width="110" height="160" rx="4" fill="none" stroke="#cfe6f7" stroke-width="3" opacity=".5"/>
+    <g stroke="#f5f1e5" stroke-width="4" stroke-linecap="round" opacity=".85">
+      <path d="M266 196l26 24M264 222l22-22"/>
+      <path d="M300 186h34M300 202h26M300 218h34"/>
+      <path d="M264 262l14 12 16-26M310 268h22"/>
+    </g>
+    <circle cx="300" cy="384" r="6" fill="#f8cd7a"/>
+  </g>
+  <!-- teacher -->
+  <g>
+    <path d="M150 288c-10-20-14-42-8-60 30-6 52-2 70 12 6 18 4 40-8 58l-24 6z" fill="#123a5e"/>
+    <path d="M150 252c-4-30 14-48 42-52 22 6 40 24 38 56l-12 4-16-34-20 6 8 34z" fill="#1b6ba9"/>
+    <circle cx="188" cy="176" r="42" fill="#8a5a3a"/>
+    <path d="M188 128c-28 0-44 16-44 42 0 6 2 12 6 15l38-3 38 3c4-3 6-9 6-15 0-26-16-42-44-42z" fill="#0d3050"/>
+    <path d="M150 168c6-18 20-30 44-30 26 0 40 12 46 30 0 5-3 9-7 11l-76-2c-4-2-7-5-7-9z" fill="#19304c"/>
+    <!-- glasses + chalk hand -->
+    <path d="M160 208h10M168 212l4 4h6l6-4 8 4 6-4" fill="none" stroke="#0d3050" stroke-width="3" stroke-linecap="round"/>
+    <path d="M216 196l30 54" stroke="#123a5e" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="262" cy="286" r="8" fill="#8a5a3a"/>
+    <path d="M216 196l44 12 12 16-10 12-30-14z" fill="#0c3050"/>
+    <!-- robe lower -->
+    <path d="M138 306l-8 96-16 34 76 8 12-8-14-40-24-4 6-94z" fill="#173a60"/>
+    <path d="M160 396l6-70" stroke="#0c3050" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <!-- open book on the desk -->
+  <g fill="#d9a24b" stroke="#7c5217" stroke-width="3" stroke-linejoin="round">
+    <path d="M120 404c26-10 50-10 72 0v-14c-22-8-46-8-72 0z"/>
+    <path d="M120 440c26-10 50-10 72 0v-32c-22-8-46-8-72 0z"/>
+  </g>
+</svg>

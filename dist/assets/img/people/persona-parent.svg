@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 520" role="img" aria-labelledby="t">
+  <title id="t">A parent with a child — illustrated, a placeholder for a real photograph</title>
+  <defs>
+    <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a8dcf8"/><stop offset=".62" stop-color="#e8f5fe"/><stop offset="1" stop-color="#f3efe1"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#f8cd7a" stop-opacity=".85"/><stop offset="1" stop-color="#f8cd7a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="420" height="520" fill="url(#sk)"/>
+  <circle cx="322" cy="150" r="120" fill="url(#glow)"/>
+  <path d="M-10 432q215-70 440 0v88H-10z" fill="#fbf8ec" opacity=".92"/>
+  <path d="M-10 472q215-52 440 0v88H-10z" fill="#efe8d4"/>
+  <g fill="none" stroke="#0d6fa8" stroke-width="1.4" opacity=".22">
+    <path d="M30 300h110"/><path d="M44 312h94"/><path d="M58 324h78"/>
+    <path d="M286 300h100"/><path d="M298 312h86"/>
+  </g>
+  <!-- mother, far back -->
+  <g fill="#0c3a5e">
+    <path d="M140 128a32 32 0 0 1 64 0c0 17-3 24-5 32h42c-2 8-6 13-14 17l-20 8-8 8 6 178h-42l-22-46-18 16-36-2 4-150-22-9z" transform="translate(206 -6) scale(.82)"/>
+  </g>
+  <!-- mother -->
+  <g>
+    <path d="M196 200a46 46 0 0 1 92 0c0 34-6 44-10 56h-72c-4-12-10-22-10-56z" fill="#2a4d74"/>
+    <path d="M196 230c-2-26 10-42 30-46h-2c-30-2-48 14-52 44l-6 16-44 34 24 54 34-28 16 60-6 96-36 4-6 8 70 0 4-8-32-6 6-92 12 12 8-14z" fill="#182f52"/>
+    <path d="M196 230c-2 14 8 22 22 24h46c10-2 16-10 15-24l-26-10z" fill="#5d3b28"/>
+    <path d="M238 158a18 18 0 1 0-2-40 18 18 0 0 0 2 38z" fill="#7e5a3a"/>
+    <path d="M240 140c6-7 20-4 25 2-7-18-34-13-34 4 0 8 3 12 9 12 8 0 12-10 13-22l-13 4z" fill="#0c3a5e"/>
+    <path d="M206 336l10 74-12 8 28 0 12-8-6-70" fill="none" stroke="#0c3a5e" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <!-- child, held hand -->
+  <g fill="#27466e">
+    <path d="M128 400c-10-6-18-20-16-38 12-2 24 2 36 10l-10 26z"/>
+    <circle cx="134" cy="388" r="16" fill="#2a4d74"/>
+    <path d="M120 378c-2-10 3-17 13-19 6 2 10 5 11 9-8 4-19 6-24 10z" fill="#182f52"/>
+    <circle cx="136" cy="384" r="10" fill="#8a5a3a"/>
+  </g>
+  <path d="M70 316l14 6 74-20-6 3zM156 300l14-6 206 26" fill="none" stroke="#d9a24b" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+  <!-- small flower on desk line -->
+  <g fill="#d9a24b" stroke="#d9a24b" stroke-width="3" stroke-linecap="round" opacity=".7">
+    <path d="M356 338v-24"/><circle cx="356" cy="304" r="7"/>
+  </g>
+</svg>

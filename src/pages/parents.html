@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parents &amp; Calendar — Excellence International Schools, Jalingo</title>
+  <meta name="description" content="The EIS parents area: term dates and calendar export, the results lookup demo, downloads and the parents’ forum. For families of the Excellence community in Jalingo.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/extras.css">
+  <script type="application/ld+json"><!--__schema__--></script>
+<!--__social__-->
+</head>
+<body>
+<!--__header__-->
+<main id="main">
+
+  <!-- ============ INNER HERO ============ -->
+  <section class="hero hero--inner" aria-labelledby="pageTitle">
+    <div class="hero-media" aria-hidden="true">
+      <img src="/assets/img/day-3.svg" alt="" width="1200" height="750">
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="wrap hero-inner" data-reveal>
+      <p class="kicker hero-kicker">Parents</p>
+      <h1 id="pageTitle">Everything a parent needs, in one place</h1>
+      <p>Term dates, the termly calendar, the results preview, downloads and the parents’ forum — so school and home are never out of step.</p>
+    </div>
+  </section>
+
+  <!-- ============ TERM CALENDAR ============ -->
+  <section class="section" aria-labelledby="calTitle">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">Term dates · 2026–27 [demo calendar]</p>
+        <h2 id="calTitle">The term at a glance</h2>
+        <p class="lead">Drawn from the events on this site — a demonstration of the live calendar. Term and holiday days are set by the academic office.</p>
+      </div>
+      <div id="termCalendar" data-reveal aria-live="polite"></div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;align-items:center" data-reveal>
+        <button class="btn btn--secondary" type="button" id="calExport"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg> Export as .ics (demo)</button>
+        <span style="font-size:.84rem;color:var(--muted)">Import into your phone’s calendar in two taps.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS LOOKUP ============ -->
+  <section class="section section--paper-2" id="results" aria-labelledby="resTitle">
+    <div class="wrap">
+      <div class="split-2" style="align-items:start">
+        <div data-reveal>
+          <p class="kicker">Results portal</p>
+          <h2 id="resTitle">Check a term’s results</h2>
+          <p class="lead">In the live portal, a parent enters the secure reference from the child’s report card and sees the term’s outcome. This is the demo preview — try one of the two sample keys below.</p>
+          <p style="font-size:.9rem;color:var(--muted)">Sample references: <button class="chip-btn" type="button" data-fill="EIS-2026-001">EIS-2026-001</button> · <button class="chip-btn" type="button" data-fill="EIS-2026-002">EIS-2026-002</button></p>
+        </div>
+        <div id="resultsLookup" class="form-card" data-reveal style="--d:80ms">
+          <form id="resultForm" novalidate>
+            <div class="field">
+              <label for="resId">Student reference <span class="req">*</span></label>
+              <input class="input" id="resId" name="ref" type="text" required placeholder="E.g. EIS-2026-001" autocomplete="off">
+              <p class="hint">Found on the printed report card. Demo keys: EIS-2026-001, EIS-2026-002.</p>
+            </div>
+            <button class="btn btn--primary btn--block" type="submit">Look up result <span class="arr" aria-hidden="true">→</span></button>
+          </form>
+          <div id="resultOut" hidden></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOWNLOADS ============ -->
+  <section class="section" aria-labelledby="dlTitle">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="kicker">Downloads [demo]</p>
+        <h2 id="dlTitle">Useful files, on their way here</h2>
+        <p class="lead">The real guides will be hosted here at launch. For now each card shows where it will sit.</p>
+      </div>
+      <div class="grid grid--4" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="fcard" data-reveal>
+          <div class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
+          <h3>Admissions guide 2026–27</h3>
+          <p>The application journey, requirements and key contacts in one place. <span class="tiny-label" style="margin-left:.35rem">PDF · 1.2 MB</span></p>
+          <a class="text-link" href="#" data-demo-dl="Admissions guide 2026–27">Download (demo) <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="fcard" data-reveal style="--d:.07s">
+          <div class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <h3>School prospectus</h3>
+          <p>Our mission, the four key stages and life on campus. <span class="tiny-label" style="margin-left:.35rem">PDF · 4.8 MB</span></p>
+          <a class="text-link" href="#" data-demo-dl="School prospectus">Download (demo) <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="fcard" data-reveal style="--d:.14s">
+          <div class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18"/></svg></div>
+          <h3>Term dates 2026–27</h3>
+          <p>Import the full school calendar into your phone or desktop. <span class="tiny-label" style="margin-left:.35rem">ICS</span></p>
+          <a class="text-link" href="#" data-demo-dl="Term dates 2026–27">Download (demo) <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="fcard" data-reveal style="--d:.21s">
+          <div class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2M12 2v20"/><path d="M16 6a3.5 3.5 0 0 0-3.5 1.5A3.5 3.5 0 0 1 5 12"/></svg></div>
+          <h3>Uniform guide</h3>
+          <p>What pupils wear across Primary, Junior and Senior schools. <span class="tiny-label" style="margin-left:.35rem">PDF · 0.6 MB</span></p>
+          <a class="text-link" href="#" data-demo-dl="Uniform guide">Download (demo) <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARENTS FORUM + CONTACT ============ -->
+  <section class="section section--soft" aria-labelledby="forumTitle">
+    <div class="wrap">
+      <div class="split-2">
+        <div data-reveal>
+          <p class="kicker">Parents’ forum</p>
+          <h2 id="forumTitle">A forum that actually meets</h2>
+          <p>Every year the Parents’ Forum elects a liaison team to champion welfare, safeguarding and healthy school–home communication. [Demo content — real committee details are confirmed by the school.]</p>
+          <ul class="checks">
+            <li>Elected parent representatives each session</li>
+            <li>Termly meetings reported back to every family</li>
+            <li>A warm first-newsletter welcome for new parents</li>
+          </ul>
+        </div>
+        <div class="form-card" data-reveal style="--d:80ms">
+          <h3 style="margin-top:.2rem">Write to the school office</h3>
+          <p style="color:var(--ink-2)">Anything at all — the office routes it to the right person.</p>
+          <form data-demo-form novalidate>
+            <div class="field"><label for="poName">Full name <span class="req">*</span></label><input class="input" id="poName" name="name" type="text" required autocomplete="name"></div>
+            <div class="field"><label for="poPhone">Phone / WhatsApp <span class="req">*</span></label><input class="input" id="poPhone" name="phone" type="tel" required autocomplete="tel"></div>
+            <div class="field"><label for="poMsg">Message <span class="req">*</span></label><textarea class="textarea" id="poMsg" name="message" required></textarea></div>
+            <button class="btn btn--primary btn--block" type="submit">Send to the office <span class="arr" aria-hidden="true">→</span></button>
+          </form>
+          <div class="form-ok"><div class="ok-ic"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Message sent — demo</h3><p>The live build routes this to the office mailbox.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section" style="padding-top:0" aria-label="Parent support">
+    <div class="wrap">
+      <div class="cta-band" data-reveal>
+        <div style="display:grid;gap:1.4rem;justify-items:start;max-width:640px">
+          <h2>Something on your mind about school life?</h2>
+          <p>Ask EIS answers the common questions; the office answers the rest.</p>
+          <div class="hero-cta" style="margin-top:0">
+            <a class="btn btn--paper" href="/contact">Contact the office <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="/life" style="color:#fff;border-color:rgba(255,255,255,.4)">See student life</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<!--__footer__-->
+<!--__ask__-->
+<script src="/assets/data/app-data.js" defer></script>
+<script src="/assets/js/app.js" defer></script>
+<script src="/assets/js/ask.js" defer></script>
+</body>
+</html>

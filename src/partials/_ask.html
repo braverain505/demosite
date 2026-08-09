@@ -1,0 +1,50 @@
+<!-- Ask EIS — demo assistant -->
+<div class="ask-panel" id="askPanel" role="dialog" aria-modal="true" aria-labelledby="askTitle">
+  <div class="ask-h">
+    <span class="av" aria-hidden="true">E</span>
+    <div>
+      <b id="askTitle">Ask EIS</b>
+      <span>Admissions assistant · usual working hours: 8:00 – 16:00</span>
+    </div>
+    <span class="demo" aria-hidden="true">Demo</span>
+    <button class="ask-close" aria-label="Close Ask EIS">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="ask-msgs" aria-live="polite"></div>
+  <div class="ask-sugs" role="group" aria-label="Suggested questions"></div>
+  <form class="ask-form" role="search">
+    <input id="askInput" type="text" autocomplete="off" placeholder="Ask about fees, deadlines, term dates…" aria-label="Ask a question about EIS">
+    <button class="ask-send" id="askSend" aria-label="Send question">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+    </button>
+  </form>
+  <div class="ask-foot"><span class="pulse-dot"></span> Demo preview — rule-based answers, no live AI</div>
+</div>
+
+<button class="ask-fab" id="askFab" aria-controls="askPanel" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3c-1.5 0-2.9-.4-4.1-1L3 20l1.2-5.4a8.5 8.5 0 1 1 16.8-3.1z"/></svg>
+  Ask EIS
+</button>
+
+<!-- Lightbox / gallery modal -->
+<div class="modal" id="lbModal" role="dialog" aria-modal="true" aria-label="Campus gallery">
+  <div class="modal-bg" aria-hidden="true"></div>
+  <div class="modal-card">
+    <div class="modal-h">
+      <div class="t">Campus gallery</div>
+      <button class="modal-close" aria-label="Close gallery">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-b">
+      <div class="lb-big" id="lbBig"></div>
+      <p class="lb-cap" id="lbCap"></p>
+      <p style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:1rem">Arrow keys to browse · Illustrated views of the campus, in the brand palette.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Explore EIS — applied on every page so the chosen perspective
+     persists across the site for the current browser session. -->
+<script src="/assets/js/explore.js" defer></script>

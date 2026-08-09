@@ -1,0 +1,175 @@
+/* ============================================================
+   EIS — Explore EIS  (signature homepage experience)
+   "Paper & Sky" — editorial, restrained, keyboard & reduced-motion
+   friendly. Persona cards → in-place personalized experience.
+   ============================================================ */
+
+.explore { padding-block: var(--sec-pad); position: relative; }
+.explore::before {
+  content: ""; position: absolute; inset-block: 0; left: 0; right: 0;
+  background:
+    radial-gradient(60% 60% at 85% 8%, rgba(61,147,207,.08), transparent 70%),
+    linear-gradient(180deg, transparent, rgba(226,240,250,.45) 40%, transparent);
+  pointer-events: none;
+}
+.explore .sec-head { max-width: 34rem; }
+
+/* ---------- persona selector ---------- */
+.pz-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(1rem, 2.2vw, 1.4rem); list-style: none; padding: 0; margin: 2.6rem 0 0;
+}
+.pz-card {
+  display: flex; flex-direction: column; width: 100%; padding: 0; margin: 0;
+  text-align: left; font: inherit; color: inherit; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md);
+  overflow: hidden; box-shadow: var(--shadow-1);
+  transition: transform var(--t-mid) var(--ease), box-shadow var(--t-mid) var(--ease),
+              border-color var(--t-mid) var(--ease);
+}
+.pz-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-2); border-color: rgba(13,111,168,.35); }
+.pz-card:active { transform: translateY(-1px); }
+.pz-card:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+.pz-card[aria-pressed="true"] { border-color: var(--green); box-shadow: 0 0 0 1px var(--green) inset, var(--shadow-2); }
+
+.pz-media { position: relative; aspect-ratio: 5 / 4.6; overflow: hidden; background: linear-gradient(180deg, #dff1fb, #f3efe1); }
+.pz-media img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.01);
+  transition: transform var(--t-slow) var(--ease); }
+.pz-card:hover .pz-media img, .pz-card:focus-visible .pz-media img { transform: scale(1.06); }
+
+.pz-body { display: grid; gap: .45rem; padding: 1.05rem 1.2rem 1.3rem; flex: 1; align-content: start; }
+.pz-eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--green); }
+.pz-name { font-family: var(--serif); font-size: 1.34rem; font-weight: 600; letter-spacing: -.01em; line-height: 1.15; color: var(--ink); }
+.pz-line { display: block; width: 2rem; height: 2px; background: var(--saffron); margin: .35rem 0 .15rem;
+  transition: width var(--t-mid) var(--ease); }
+.pz-card:hover .pz-line { width: 3.2rem; }
+.pz-copy { font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
+.pz-cta { margin-top: auto; padding-top: .9rem; font-weight: 600; font-size: .9rem; color: var(--green); display: inline-flex; align-items: center; gap: .45rem; }
+.pz-cta .arr { transition: transform var(--t-mid) var(--ease); }
+.pz-card:hover .pz-cta .arr, .pz-card:focus-visible .pz-cta .arr { transform: translateX(4px); }
+
+.pz-hint { margin-top: 1.1rem; font-size: .78rem; color: var(--muted); }
+
+/* ---- personalized view ---- */
+.explore[data-state="active"] .pz-selector { display: none; }
+.explore[data-state="select"] .ev { display: none; }
+
+.ev { margin-top: 2.6rem; min-height: 440px; }
+/* first reveal (select-state → active): the stage itself fades up, then the
+   rows below stagger in. The :not(.is-leave) guard keeps the switch crossfade
+   (which uses .is-leave) from fighting the entrance fill. */
+.explore[data-state="active"] .ev:not(.is-leave) { animation: evStage .42s var(--ease) both; }
+@keyframes evStage { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.ev.is-leave { opacity: 0; transform: translateY(12px); transition: opacity .26s var(--ease), transform .26s var(--ease); }
+.ev-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  padding-bottom: 1.2rem; border-bottom: 1px solid var(--line); margin-bottom: 2.2rem; }
+.ev-chip { display: inline-flex; align-items: center; gap: .55rem; font-size: .8rem; font-weight: 600; color: var(--green); }
+.ev-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; }
+.ev-switch { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; }
+.ev-switch button, .ev-reset {
+  font: inherit; font-size: .82rem; font-weight: 600; letter-spacing: .02em;
+  border: 1px solid var(--line-2); border-radius: 999px; padding: .42rem .9rem; cursor: pointer;
+  background: transparent; color: var(--ink-2); transition: all var(--t-fast) var(--ease);
+}
+.ev-switch button:hover { border-color: var(--green); color: var(--green); }
+.ev-switch button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #f4f8fc; }
+.ev-switch button:focus-visible, .ev-reset:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+.ev-reset { background: var(--green-soft); border-color: rgba(13,111,168,.25); color: var(--green); margin-left: .4rem; }
+.ev-reset:hover { background: var(--green); color: #fff; }
+
+/* entrance animation (staggered rows) */
+.ev-rows > * { opacity: 0; transform: translateY(14px); animation: evIn .55s var(--ease) forwards; }
+.ev-rows > *:nth-child(2) { animation-delay: .06s; }
+.ev-rows > *:nth-child(3) { animation-delay: .12s; }
+.ev-rows > *:nth-child(4) { animation-delay: .18s; }
+.ev-rows > *:nth-child(5) { animation-delay: .24s; }
+@keyframes evIn { to { opacity: 1; transform: none; } }
+.explore.is-swapping .ev-rows > * { animation: none; opacity: 1; transform: none; }
+
+.ev-hero { display: grid; grid-template-columns: 1.45fr .8fr; gap: clamp(1.6rem, 4vw, 3rem); align-items: center; }
+.ev-kicker { font-size: .76rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--saffron-2); }
+.ev-kicker .ok { color: var(--green); }
+.ev h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 600; letter-spacing: -.02em;
+  line-height: 1.12; color: var(--ink); margin: .5rem 0 .9rem; }
+.ev-intro { color: var(--ink-2); max-width: 52ch; line-height: 1.6; }
+.ev-cta { display: flex; gap: .8rem; align-items: center; flex-wrap: wrap; margin-top: 1.5rem; }
+
+.ev-figure { position: relative; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-2); }
+.ev-figure img { display: block; width: 100%; aspect-ratio: 4 / 4.4; object-fit: cover; }
+.ev-figure figcaption { position: absolute; inset-inline: 0; bottom: 0; padding: 2.4rem 1.1rem .9rem;
+  background: linear-gradient(180deg, transparent, rgba(7,51,80,.72)); color: #e9f4fc; font-size: .78rem; }
+
+/* priority index list */
+.ev-prio { margin-top: 3.2rem; }
+.ev-prio h4 { font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem; }
+.ev-prio ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.1rem 2rem; }
+.ev-prio li { display: grid; grid-template-columns: 2rem 1fr; column-gap: .8rem; align-items: baseline; padding:.4rem 0; border-top: 1px solid var(--line); }
+.ev-prio .n { font-family: var(--serif); color: var(--saffron-2); font-weight: 600; font-size: 1rem; }
+.ev-prio a { text-decoration: none; color: var(--ink); font-weight: 600; }
+.ev-prio a:hover { color: var(--green); }
+.ev-prio p { grid-column: 2; margin: .1rem 0 0; font-size: .82rem; color: var(--ink-2); }
+
+/* persona-specific band */
+.ev-band { margin-top: 3.4rem; border-radius: var(--r-lg); padding: clamp(1.4rem, 3vw, 2.2rem);
+  background: var(--green-soft); border: 1px solid rgba(13,111,168,.16); }
+.ev-band h4 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 1.3rem; }
+.band-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.1rem; }
+.band-item { display: flex; gap: .7rem; align-items: flex-start; }
+.band-item .b-ic { color: var(--green); flex: none; padding-top: .1rem; }
+.band-item b { display: block; color: var(--ink); font-size: .95rem; }
+.band-item span { font-size: .85rem; line-height: 1.45; color: var(--ink-2); }
+
+/* prospective: the journey 01-04 */
+.journey { --steps: 4; display: grid; grid-template-columns: repeat(var(--steps), 1fr); gap: .8rem; }
+.journey .j-step { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 1.15rem; }
+.journey .n { font-family: var(--serif); font-size: 2rem; font-weight: 600; color: var(--saffron-2); line-height: 1; }
+.journey b { display: block; margin: .7rem 0 .25rem; color: var(--ink); }
+.journey span { font-size: .8rem; color: var(--ink-2); }
+.journey .j-step + .j-step::before { content: ""; position:absolute; left:-.45rem; top:50%; width:.9rem; height:1px; background: var(--line-2); }
+
+/* student: chip cloud */
+.chip-cloud { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.1rem; }
+.chip { font-size: .84rem; font-weight: 600; color: var(--ink-2); border: 1px solid var(--line-2);
+  border-radius: 999px; padding: .5rem 1rem; background: transparent; transition: all var(--t-fast) var(--ease); }
+.chip:hover { border-color: var(--green); color: var(--green); }
+.chip:hover, a.chip:focus-visible { border-color: var(--green); color: var(--green); outline: none; }
+a.chip:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+
+.ev-foot { margin-top: 2.6rem; font-size: .78rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 1.1rem; }
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .pz-card, .pz-media img, .pz-line, .pz-cta .arr, .ev-switch button, .ev-reset, .ev.is-leave { transition: none; }
+  .pz-card:hover, .pz-card:focus-visible { transform: none; }
+  .pz-card:hover .pz-media img, .pz-card:focus-visible .pz-media img { transform: none; }
+  .ev.is-leave { opacity: 1; transform: none; }
+  .explore[data-state="active"] .ev:not(.is-leave) { animation: none; opacity: 1; transform: none; }
+  .ev-rows > * { opacity: 1; transform: none; animation: none; }
+}
+
+/* ---------- personalization chips elsewhere on the page ---------- */
+.pz-tag { display: none; align-items: center; gap: .35rem; width: fit-content; margin: 0 0 .7rem;
+  font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--green); background: #e2f0fa; border: 1px solid rgba(13,111,168,.3); border-radius: 999px; padding: .28rem .7rem; }
+.pz-tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+html[data-persona="parent"]      [data-for~="parent"]      > .pz-tag,
+html[data-persona="student"]     [data-for~="student"]     > .pz-tag,
+html[data-persona="prospective"] [data-for~="prospective"] > .pz-tag,
+html[data-persona="teacher"]     [data-for~="teacher"]     > .pz-tag { display: inline-flex; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 860px) {
+  .ev-hero { grid-template-columns: 1fr; }
+  .ev-figure { max-width: 420px; }
+  .journey { grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); }
+  .journey .j-step + .j-step::before { display: none; }
+}
+@media (max-width: 620px) {
+  .pz-grid { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.8rem; }
+  .pz-media { aspect-ratio: 16 / 8; }
+  .ev { margin-top: 1.6rem; min-height: 0; }
+}
+@media (max-width: 380px) {
+  .ev-switch { width: 100%; }
+  .ev-reset { margin-left: 0; }
+}

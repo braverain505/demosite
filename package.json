@@ -1,0 +1,28 @@
+{
+  "name": "eis-jalingo-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Excellence International Schools, Jalingo — premium marketing site (static, zero-dependency), design direction: Paper & Sky.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs",
+    "smoke": "npm run build && node scripts/smoke.mjs",
+    "shots": "npm run build && node scripts/viewport-shots.mjs",
+    "a11y": "node scripts/a11y-scan.mjs",
+    "console": "node scripts/console-check.mjs",
+    "interaction": "node scripts/interaction-check.mjs",
+    "transition": "node scripts/page-transition-check.mjs",
+    "parallax": "node scripts/parallax-check.mjs",
+    "explore": "node scripts/explore-check.mjs",
+    "nav": "node scripts/nav-measure.mjs"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axe-core": "^4.13.0",
+    "playwright": "^1.62.1"
+  }
+}
