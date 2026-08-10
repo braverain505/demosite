@@ -15,6 +15,7 @@
     "transition": "node scripts/page-transition-check.mjs",
     "parallax": "node scripts/parallax-check.mjs",
     "explore": "node scripts/explore-check.mjs",
+    "calendar": "node scripts/calendar-check.mjs",
     "nav": "node scripts/nav-measure.mjs"
   },
   "main": "index.js",

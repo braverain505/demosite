@@ -100,11 +100,14 @@
       items.forEach((el) => el.classList.add('is-in'));
       return;
     }
+    // threshold 0 (not `0.12`): any element taller than the viewport — e.g. the
+    // 7.7k-tall term calendar — can never reach 12% visible, so it would stay
+    // opacity:0 forever. Reveal the instant any part enters the effective root.
     const io = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
         if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
     items.forEach((el) => io.observe(el));
   });
 
