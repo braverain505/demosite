@@ -33,8 +33,8 @@
    so aspect-ratio-1 day cells stay small (they would otherwise span the full
    column and become column-wide squares). */
 .cal-mth { font-size: 0.95rem; margin: 1.1rem 0 0.3rem; }
-.cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; max-width: 21rem; margin: 0.45rem 0 0.9rem; }
-.cal-dow { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; width: min(100%, 21rem); margin: 0.45rem 0 0.9rem; }
+.cal-dow { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; grid-column: 1 / -1; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
 .cal-e {
   aspect-ratio: 1; display: grid; place-items: center; position: relative;
   border-radius: 6px; background: var(--surface); border: 1px solid var(--line);
