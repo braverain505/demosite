@@ -434,36 +434,25 @@
     });
     const short = (m) => ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m - 1];
     const fmt = (iso) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${short(m)} ${y}`; };
-    // grids are width-constrained by `.cal { max-width }` in extras.css so day cells stay small.
-    let grids = '';
+    // Each month is a heading, its calendar grid, then that month's events
+    // listed directly beneath the grid. `.cal` is width-constrained (max-width
+    // in extras.css) so aspect-ratio-1 day cells stay small.
+    let html = '';
     [...months.entries()].forEach(([key, list]) => {
       const [y, m] = key.split('-').map(Number);
       const first = new Date(y, m - 1, 1);
       const weekStart = (first.getDay() + 6) % 7; // Monday-first
       const days = new Date(y, m, 0).getDate();
-      grids += `<h3 class="cal-mth">${short(m)} ${y}</h3><div class="cal"><div class="cal-dow">${['M','T','W','T','F','S','S'].map((x) => `<span>${x}</span>`).join('')}</div>`;
-      for (let i = 0; i < weekStart; i++) grids += '<span class="cal-e m"></span>';
+      html += `<h3 class="cal-mth">${short(m)} ${y}</h3><div class="cal"><div class="cal-dow">${['M','T','W','T','F','S','S'].map((x) => `<span>${x}</span>`).join('')}</div>`;
+      for (let i = 0; i < weekStart; i++) html += '<span class="cal-e m"></span>';
       for (let d = 1; d <= days; d++) {
         const evs = list.filter((x) => x.day === d);
-        grids += `<span class="cal-e${evs.length ? ' has-ev' : ''}"${evs.length ? ` title="${evs.map((x) => x.title).join(', ')}"` : ''}>${d}${evs.length ? `<i>${evs.length}</i>` : ''}</span>`;
+        html += `<span class="cal-e${evs.length ? ' has-ev' : ''}"${evs.length ? ` title="${evs.map((x) => x.title).join(', ')}"` : ''}>${d}${evs.length ? `<i>${evs.length}</i>` : ''}</span>`;
       }
-      grids += '</div>';
-      grids += `<ul class="cal-list">${list.map((ev) => `<li><b class="t-num">${fmt(ev.date)}</b> — ${ev.title} <em class="tiny-label">${ev.tag}</em></li>`).join('')}</ul>`;
+      html += '</div>';
+      html += `<ul class="cal-list">${list.map((ev) => `<li><b class="t-num">${fmt(ev.date)}</b> — ${ev.title} <em class="tiny-label">${ev.tag}</em></li>`).join('')}</ul>`;
     });
-    // collapsed by default: a compact flat list of the term's dates
-    const summary = events.map((ev) => `<li><b class="t-num">${fmt(ev.date)}</b> — ${ev.title} <em class="tiny-label">${ev.tag}</em></li>`).join('');
-    cal.innerHTML =
-      `<ul class="cal-list cal-summary">${summary}</ul>` +
-      `<button type="button" class="btn btn--secondary cal-toggle" aria-expanded="false" aria-controls="calGrids">Show the month-by-month calendar</button>` +
-      `<div class="cal-grids" id="calGrids">${grids}</div>`;
-    const toggle = cal.querySelector('.cal-toggle');
-    const panel = cal.querySelector('.cal-grids');
-    toggle?.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      panel?.classList.toggle('is-open', !expanded);
-      toggle.textContent = expanded ? 'Show the month-by-month calendar' : 'Hide the month-by-month calendar';
-    });
+    cal.innerHTML = html;
     const exportBtn = $('#calExport');
     exportBtn?.addEventListener('click', () => {
       const ics = 'BEGIN:VCALENDAR\nVERSION:2.0\n' + events.map((ev) => `BEGIN:VEVENT\nSUMMARY:${ev.title}\nDTSTART;VALUE=DATE:${ev.date.replace(/-/g, '')}\nDTEND;VALUE=DATE:` + (ev.dateT || ev.date).replace(/-/g, '') + '\nEND:VEVENT').join('\n') + '\nEND:VCALENDAR';

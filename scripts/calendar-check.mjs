@@ -1,16 +1,16 @@
 /**
  * EIS term-calendar QA — asserts #termCalendar renders from window.EIS_DATA,
- * is COLLAPSED by default (compact summary + hidden month grids), its
- * [data-reveal] reveal actually lands, and the "Show month-by-month" toggle
- * expands/collapses. Console must stay clean.
+ * expanded by default: one month block per month = heading (H3) + `.cal` grid
+ * + `.cal-list` holding THAT month's events directly beneath the grid. The
+ * [data-reveal] reveal must land, and the console must stay clean.
  *
- * Regression notes (2026-08-09):
- * - The reveal observer used threshold 0.12; the 7.7k-tall calendar could never
- *   reach 12% visibility, so it sat at opacity:0 forever (big white space). The
- *   observer now uses threshold 0 — this check asserts opacity lands at 1.
- * - The full calendar was huge: aspect-ratio-1 cells across the full column +
- *   8 open months ≈ 7,747px. Now collapsed by default with width-constrained
- *   grids — the check asserts collapsed height stays well under 1.5k px.
+ * Regression notes (2026-08-09/10):
+ * - The reveal observer used threshold 0.12; the tall calendar could never
+ *   reach 12% visibility, so it sat at opacity:0 forever (big white space).
+ *   The observer now uses threshold 0 — this check asserts opacity lands at 1.
+ * - Cards flow expanded by default (no collapse/toggle): each month's events
+ *   render under that month's calendar grid, `.cal` width-constrained to 21rem
+ *   so day cells stay small.
  */
 import { chromium } from 'playwright';
 import { spawn } from 'node:child_process';
@@ -49,26 +49,55 @@ try {
   await page.goto(`http://${HOST}:${PORT}/parents`, { waitUntil: 'load' });
   await page.waitForTimeout(600);
 
-  // --- initial collapsed state ---
+  // --- expanded month-block structure ---
   const pre = await page.evaluate(() => {
     const cal = document.querySelector('#termCalendar');
-    const grids = cal?.querySelector('.cal-grids');
-    const btn = cal?.querySelector('.cal-toggle');
+    if (!cal) return { hasData: false };
+    const kids = [...cal.children];
+    // every month block is H3 -> .cal -> .cal-list, in that order
+    const patternOk = kids.length % 3 === 0 && kids.every((el, i) =>
+      i % 3 === 0 ? el.tagName === 'H3' && el.classList.contains('cal-mth')
+        : i % 3 === 1 ? el.classList.contains('cal') && !el.classList.contains('cal-list')
+          : el.tagName === 'UL' && el.classList.contains('cal-list'));
+    // expected per-month event counts from EIS_DATA (monthly keys already sorted by render order)
+    const expected = new Map();
+    window.EIS_DATA?.events?.forEach((ev) => {
+      const k = ev.date.slice(0, 7);
+      expected.set(k, (expected.get(k) || 0) + 1);
+    });
+    const shortIdx = (m) => ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(m) + 1;
+    const rendered = [];
+    let okCounts = true;
+    let total = 0;
+    for (let i = 0; i < kids.length; i += 3) {
+      const h = kids[i].textContent.trim();
+      const [mName, year] = h.split(' ');
+      const monthKey = `${year}-${String(shortIdx(mName)).padStart(2, '0')}`; // "Sep 2026" -> "2026-09"
+      const cells = kids[i + 1].querySelectorAll('.cal-e').length;
+      const n = kids[i + 2].children.length;
+      total += n;
+      const exp = expected.get(monthKey);
+      if (exp !== n) okCounts = false;
+      rendered.push({ h, cells, events: n });
+    }
     return {
       hasData: typeof window.EIS_DATA !== 'undefined',
       eventsLen: window.EIS_DATA?.events?.length ?? null,
-      summaryItems: cal ? cal.querySelectorAll('.cal-summary li').length : -1,
-      collapsedHeight: cal ? cal.offsetHeight : -1,
-      gridsClosed: grids ? !grids.classList.contains('is-open') && grids.offsetHeight === 0 : false,
-      btnLabel: btn ? btn.textContent.trim() : '',
-      btnExpanded: btn ? btn.getAttribute('aria-expanded') : '',
+      months: kids.length / 3,
+      patternOk,
+      okCounts,
+      totalEvents: total,
+      rendered,
+      height: cal.offsetHeight,
     };
   });
   pre.hasData && pre.eventsLen === 12 ? ok('window.EIS_DATA.events = 12') : bad(`EIS_DATA broken: ${JSON.stringify(pre)}`);
-  pre.summaryItems === 12 ? ok(`summary list renders all ${pre.summaryItems} events`) : bad(`summary items = ${pre.summaryItems}`);
-  pre.gridsClosed ? ok('month-by-month grids collapsed by default') : bad('grids should be collapsed on load');
-  pre.collapsedHeight < 1500 ? ok(`collapsed height ${pre.collapsedHeight}px (was ~7,747 — now under 1,500)`) : bad(`collapsed height too tall: ${pre.collapsedHeight}px`);
-  pre.btnLabel.startsWith('Show') && pre.btnExpanded === 'false' ? ok('toggle is labelled "Show…", aria-expanded=false') : bad(`toggle state wrong: ${JSON.stringify({ label: pre.btnLabel, expanded: pre.btnExpanded })}`);
+  pre.patternOk ? ok('each month block is heading → calendar grid → events list') : bad(`month-block pattern broken: ${JSON.stringify(pre.rendered)}`);
+  pre.months === 8 ? ok(`${pre.months} months rendered`) : bad(`expected 8 months, got ${pre.months}`);
+  pre.okCounts ? ok('each month’s events appear under its own calendar') : bad(`per-month counts mismatch: ${JSON.stringify(pre.rendered)}`);
+  pre.totalEvents === 12 ? ok(`all ${pre.totalEvents} events accounted for across month lists`) : bad(`total events = ${pre.totalEvents}`);
+  ok(`calendar block height ${pre.height}px`);
+  await page.screenshot({ path: '/tmp/eis-cal-top.png', clip: { x: 0, y: 40, width: 1280, height: 860 } }).catch(() => {});
 
   // --- reveal after scroll ---
   await page.evaluate(() => {
@@ -83,45 +112,7 @@ try {
     return { inClass: cal.classList.contains('is-in'), opacity: cs.opacity };
   });
   post.inClass && post.opacity === '1' ? ok('reveal landed (opacity 1)') : bad(`reveal did not land: ${JSON.stringify(post)}`);
-  await page.screenshot({ path: '/tmp/eis-cal-collapsed.png', clip: { x: 0, y: 40, width: 1280, height: 860 } }).catch(() => {});
-
-  // Smooth `html` scrolling + the reveal transition can keep the button "moving",
-  // so Playwright's actionability wait times out; settle and force the real click.
-  const clickToggle = async () => {
-    await page.evaluate(() => document.querySelector('.cal-toggle')?.scrollIntoView({ block: 'center' }));
-    await page.waitForTimeout(700);
-    await page.locator('.cal-toggle').click({ force: true });
-  };
-
-  // --- toggle expands ---
-  await clickToggle();
-  await page.waitForTimeout(500);
-  const opened = await page.evaluate(() => {
-    const t = document.querySelector('.cal-toggle');
-    const g = document.querySelector('.cal-grids');
-    return {
-      expanded: t.getAttribute('aria-expanded'),
-      label: t.textContent.trim(),
-      open: g.classList.contains('is-open'),
-      height: g.offsetHeight,
-      months: g.querySelectorAll('.cal-mth').length,
-    };
-  });
-  opened.expanded === 'true' && opened.open && opened.height > 0
-    ? ok(`toggle expands (${opened.months} month grids, ${opened.height}px)`)
-    : bad(`toggle failed to expand: ${JSON.stringify(opened)}`);
-  opened.label.startsWith('Hide') ? ok('toggle re-labelled "Hide…"') : bad(`label after expand: "${opened.label}"`);
   await page.screenshot({ path: '/tmp/eis-cal-expanded.png', clip: { x: 0, y: 40, width: 1280, height: 860 } }).catch(() => {});
-
-  // --- toggle collapses again ---
-  await clickToggle();
-  await page.waitForTimeout(300);
-  const closed = await page.evaluate(() => {
-    const t = document.querySelector('.cal-toggle');
-    const g = document.querySelector('.cal-grids');
-    return { expanded: t.getAttribute('aria-expanded'), open: g.classList.contains('is-open'), height: g.offsetHeight };
-  });
-  closed.expanded === 'false' && !closed.open && closed.height === 0 ? ok('toggle collapses again') : bad(`toggle failed to collapse: ${JSON.stringify(closed)}`);
 
   if (consoleLog.length) {
     console.log('  ✗ console errors/warnings:');
