@@ -86,7 +86,7 @@ for (const file of fs.readdirSync(PAGES).filter((f) => f.endsWith('.html'))) {
     const desc = (html.match(/name="description"\s+content="([^"]*)"/) || [])[1] || 'A Key Stages 1–4 school in Jalingo, Taraba State, Nigeria, balancing the British and Nigerian curricula.';
     const canonical = current === '/' ? `${SITE}/` : `${SITE}${current}`;
     const noindex = /name="robots"\s+content="noindex"/.test(html);
-    const image = `${SITE}/assets/img/hero-campus.svg`;
+    const image = `${SITE}/assets/img/photo/campus.png`;
     const og = [
       ...(noindex ? [] : [`  <link rel="canonical" href="${canonical}">`]),
       `  <meta property="og:type" content="website">`,
