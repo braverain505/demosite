@@ -125,10 +125,10 @@
   background: linear-gradient(180deg, rgba(12, 26, 18, 0.42) 0%, rgba(12, 26, 18, 0.24) 40%, rgba(9, 22, 15, 0.86) 100%);
 }
 .hero-inner { position: relative; width: 100%; }
-.hero-kicker { color: var(--saffron-2); }
-.hero h1 { color: #f7f3e8; max-width: 15ch; }
-[data-theme='light'] .hero h1, .hero h1 { color: #f7f3e8; }
-.hero p { color: #dfe8de; max-width: 56ch; font-size: 1.1rem; }
+.hero-kicker { color: #fff; }
+.hero h1, .hero #heroTitle { color: #fff; max-width: 15ch; }
+[data-theme='light'] .hero h1, .hero h1 { color: #fff; }
+.hero p, .hero-inner > p { color: #fff; max-width: 56ch; font-size: 1.1rem; }
 .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.6rem; }
 
 .hero-proof {
@@ -139,7 +139,7 @@
 }
 .hero-proof div { padding: 0.95rem 0.4rem; display: flex; flex-direction: column; gap: 0.2rem; }
 .hero-proof b { font-family: var(--serif); font-size: 1.35rem; color: #f7f3e8; font-weight: 600; }
-.hero-proof span { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: #b9c9bc; }
+.hero-proof span { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; }
 
 /* ---------- SECTION HEAD ---------- */
 .sec-head { margin-bottom: 2.6rem; }

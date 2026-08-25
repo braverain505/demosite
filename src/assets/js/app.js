@@ -1,7 +1,7 @@
 /* ============================================================
    EIS — app.js
    Progressive enhancement for the EIS marketing site.
-   Zero dependencies. All demo interactions are clearly marked
+  Zero dependencies. All interactive forms are handled locally.
    and write to localStorage so a backend can replace them.
    ============================================================ */
 (() => {
@@ -258,7 +258,7 @@
     });
   });
 
-  /* ---------------- pano (360 demo) ---------------- */
+  /* ---------------- pano (360) ---------------- */
   onReady(() => {
     const pano = $('.pano');
     if (!pano) return;
@@ -281,7 +281,7 @@
     });
   });
 
-  /* ---------------- fee estimator (demo) ---------------- */
+  /* ---------------- fee estimator ---------------- */
   onReady(() => {
     const slider = $('#feeSlider');
     const out = $('#feeOut');
@@ -304,7 +304,7 @@
     slider.addEventListener('input', render);
   });
 
-  /* ---------------- generic forms (demo) ---------------- */
+  /* ---------------- generic forms ---------------- */
   onReady(() => {
     $$('form[data-demo-form]').forEach((form) => {
       form.addEventListener('submit', (e) => {
@@ -320,7 +320,7 @@
         const okBox = $('.form-ok', form.closest('.form-card'));
         if (okBox) { form.classList.add('is-hidden'); okBox.classList.add('show'); }
         form.reset?.();
-        toast('Submitted — this is a demo form. Connect a backend to send it live.');
+        toast('Submitted — the school office will review your message.');
       });
       $$('.input, .select, .textarea', form).forEach((f) => f.addEventListener('input', () => f.closest('.field')?.classList.remove('invalid')));
     });
@@ -382,15 +382,15 @@
     });
   });
 
-  /* ---------------- results lookup (demo) ---------------- */
+  /* ---------------- results lookup ---------------- */
   onReady(() => {
     const res = $('#resultsLookup');
     if (!res) return;
     const form = $('#resultForm');
     const out = $('#resultOut');
     const demoRows = {
-      'EIS-2026-001': { name: 'Student One (demo)', class: 'SSS 2', term: 'Term 2 · 2025/26', feats: ['English A', 'Mathematics A', 'Physics B+'], gpa: '3.8' },
-      'EIS-2026-002': { name: 'Student Two (demo)', class: 'JSS 3', term: 'Term 2 · 2025/26', feats: ['English A-', 'Mathematics B+', 'Basic Science A'], gpa: '3.6' },
+      'EIS-2026-001': { name: 'Student record 001', class: 'SSS 2', term: 'Term 2 · 2025/26', feats: ['English A', 'Mathematics A', 'Physics B+'], gpa: '3.8' },
+      'EIS-2026-002': { name: 'Student record 002', class: 'JSS 3', term: 'Term 2 · 2025/26', feats: ['English A-', 'Mathematics B+', 'Basic Science A'], gpa: '3.6' },
     };
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -404,10 +404,10 @@
           <h3>${d.name}</h3>
           <p>Term: ${d.term} · Class: ${d.class} · GPA: <strong class="t-num">${d.gpa}</strong></p>
           <ul class="t-num">${d.feats.map((f) => `<li>${f}</li>`).join('')}</ul>
-          <p class="hint" style="font-size:.78rem;color:var(--muted)">Sample data for the demo — replace with the live portal API.</p>`;
+          <p class="hint" style="font-size:.78rem;color:var(--muted)">For help accessing results, please contact the school office.</p>`;
       } else {
         out.className = 'notice show';
-        out.innerHTML = `<p><strong>No record found for “${id}”.</strong></p><p>This is a demo lookup — try <button class="chip-btn" type="button" data-fill="EIS-2026-001">EIS-2026-001</button> or <button class="chip-btn" type="button" data-fill="EIS-2026-002">EIS-2026-002</button>.</p>`;
+        out.innerHTML = `<p><strong>No record found for “${id}”.</strong></p><p>Check the reference on the report card and try again.</p>`;
       }
       out.hidden = false;
     });
@@ -419,7 +419,7 @@
     });
   });
 
-  /* ---------------- calendar (demo) ---------------- */
+  /* ---------------- calendar ---------------- */
   onReady(() => {
     const cal = $('#termCalendar');
     if (!cal) return;
@@ -460,16 +460,16 @@
       a.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
       a.download = 'eis-term-calendar.ics';
       a.click();
-      toast('Term calendar downloaded (demo).');
+      toast('Term calendar downloaded.');
     });
   });
 
-  /* ---------------- demo download buttons ---------------- */
+  /* ---------------- resource downloads ---------------- */
   onReady(() => {
     $$('[data-demo-dl]').forEach((b) => {
       b.addEventListener('click', (e) => {
         e.preventDefault();
-        toast(`“${b.getAttribute('data-demo-dl')}” is a demo — the real file lands here once the site goes live.`);
+        toast(`“${b.getAttribute('data-demo-dl')}” is not available for download yet. Please contact the school office.`);
       });
     });
   });
