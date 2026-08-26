@@ -2,15 +2,15 @@
   "rewrites": [
     {
       "source": "/eise/:path*",
-      "destination": "http://198.251.84.200/eise/:path*"
+      "destination": "https://eisjalingo.com/eise/:path*"
     },
     {
       "source": "/eisp/:path*",
-      "destination": "http://198.251.84.200/eisp/:path*"
+      "destination": "https://eisjalingo.com/eisp/:path*"
     },
     {
       "source": "/eiss/:path*",
-      "destination": "http://198.251.84.200/eiss/:path*"
+      "destination": "https://eisjalingo.com/eiss/:path*"
     }
   ]
 }
