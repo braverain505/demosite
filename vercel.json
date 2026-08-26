@@ -1,28 +1,34 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/eise",
-      "destination": "http://198.251.84.200/eise/"
+      "destination": "http://198.251.84.200/~eisjalin23/eise/",
+      "permanent": false
     },
     {
       "source": "/eise/:path*",
-      "destination": "http://198.251.84.200/eise/:path*"
+      "destination": "http://198.251.84.200/~eisjalin23/eise/:path*",
+      "permanent": false
     },
     {
       "source": "/eisp",
-      "destination": "http://198.251.84.200/eisp/"
+      "destination": "http://198.251.84.200/~eisjalin23/eisp/",
+      "permanent": false
     },
     {
       "source": "/eisp/:path*",
-      "destination": "http://198.251.84.200/eisp/:path*"
+      "destination": "http://198.251.84.200/~eisjalin23/eisp/:path*",
+      "permanent": false
     },
     {
       "source": "/eiss",
-      "destination": "http://198.251.84.200/eiss/"
+      "destination": "http://198.251.84.200/~eisjalin23/eiss/",
+      "permanent": false
     },
     {
       "source": "/eiss/:path*",
-      "destination": "http://198.251.84.200/eiss/:path*"
+      "destination": "http://198.251.84.200/~eisjalin23/eiss/:path*",
+      "permanent": false
     }
   ]
 }
