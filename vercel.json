@@ -1,19 +1,28 @@
 {
-  "redirects": [
+  "rewrites": [
+    {
+      "source": "/eise",
+      "destination": "https://cpanel.eisjalingo.com/eise/"
+    },
     {
       "source": "/eise/:path*",
-      "destination": "https://portal.eisjalingo.com/eise/:path*",
-      "permanent": true
+      "destination": "https://cpanel.eisjalingo.com/eise/:path*"
+    },
+    {
+      "source": "/eisp",
+      "destination": "https://cpanel.eisjalingo.com/eisp/"
     },
     {
       "source": "/eisp/:path*",
-      "destination": "https://portal.eisjalingo.com/eisp/:path*",
-      "permanent": true
+      "destination": "https://cpanel.eisjalingo.com/eisp/:path*"
+    },
+    {
+      "source": "/eiss",
+      "destination": "https://cpanel.eisjalingo.com/eiss/"
     },
     {
       "source": "/eiss/:path*",
-      "destination": "https://portal.eisjalingo.com/eiss/:path*",
-      "permanent": true
+      "destination": "https://cpanel.eisjalingo.com/eiss/:path*"
     }
   ]
 }
