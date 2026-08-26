@@ -1,4 +1,16 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false
+  "rewrites": [
+    {
+      "source": "/eise/:path*",
+      "destination": "http://198.251.84.200/eise/:path*"
+    },
+    {
+      "source": "/eisp/:path*",
+      "destination": "http://198.251.84.200/eisp/:path*"
+    },
+    {
+      "source": "/eiss/:path*",
+      "destination": "http://198.251.84.200/eiss/:path*"
+    }
+  ]
 }
