@@ -1,1 +1,34 @@
-{}
+{
+  "redirects": [
+    {
+      "source": "/eise",
+      "destination": "https://198.251.84.200/eise/",
+      "permanent": false
+    },
+    {
+      "source": "/eise/:path*",
+      "destination": "https://198.251.84.200/eise/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/eisp",
+      "destination": "https://198.251.84.200/eisp/",
+      "permanent": false
+    },
+    {
+      "source": "/eisp/:path*",
+      "destination": "https://198.251.84.200/eisp/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/eiss",
+      "destination": "https://198.251.84.200/eiss/",
+      "permanent": false
+    },
+    {
+      "source": "/eiss/:path*",
+      "destination": "https://198.251.84.200/eiss/:path*",
+      "permanent": false
+    }
+  ]
+}
