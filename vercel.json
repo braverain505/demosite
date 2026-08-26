@@ -3,32 +3,17 @@
     {
       "source": "/eise",
       "destination": "https://cpanel.eisjalingo.com/eise/",
-      "permanent": true
-    },
-    {
-      "source": "/eise/:path*",
-      "destination": "https://cpanel.eisjalingo.com/eise/:path*",
-      "permanent": true
+      "permanent": false
     },
     {
       "source": "/eisp",
       "destination": "https://cpanel.eisjalingo.com/eisp/",
-      "permanent": true
-    },
-    {
-      "source": "/eisp/:path*",
-      "destination": "https://cpanel.eisjalingo.com/eisp/:path*",
-      "permanent": true
+      "permanent": false
     },
     {
       "source": "/eiss",
       "destination": "https://cpanel.eisjalingo.com/eiss/",
-      "permanent": true
-    },
-    {
-      "source": "/eiss/:path*",
-      "destination": "https://cpanel.eisjalingo.com/eiss/:path*",
-      "permanent": true
+      "permanent": false
     }
   ]
 }
