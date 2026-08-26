@@ -1,16 +1,19 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/eise/:path*",
-      "destination": "https://198.251.84.200/eise/:path*"
+      "destination": "https://portal.eisjalingo.com/eise/:path*",
+      "permanent": true
     },
     {
       "source": "/eisp/:path*",
-      "destination": "https://198.251.84.200/eisp/:path*"
+      "destination": "https://portal.eisjalingo.com/eisp/:path*",
+      "permanent": true
     },
     {
       "source": "/eiss/:path*",
-      "destination": "https://198.251.84.200/eiss/:path*"
+      "destination": "https://portal.eisjalingo.com/eiss/:path*",
+      "permanent": true
     }
   ]
 }
