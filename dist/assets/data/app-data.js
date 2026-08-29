@@ -1,7 +1,6 @@
 /* ============================================================
-   EIS — app-data.js · shared site data (demo)
-   Content that is not official school statistics is clearly
-   marked [demo]. Swap these arrays for API responses later.
+  EIS — app-data.js · shared site data
+  Shared content and contact details for the school website.
    ============================================================ */
 window.EIS_DATA = {
   DEMO: true,
@@ -25,7 +24,7 @@ window.EIS_DATA = {
   vision:
     'To create a Key Stages 1–4 school that balances the British and Nigerian curricula — a school every parent in Taraba is proud to send their child to, and where every child reaches God-given potential.',
 
-  /* ---------- news [demo] ---------- */
+  /* ---------- news ---------- */
   news: [
     { id: '10years', tag: 'Celebration', title: 'A decade of Excellence — EIS turns 10', date: '2026-09-19', lead: 'Founded on 19 September 2016, we mark our 10th anniversary with a reunion week for alumni, families and friends.', img: 'anniversary' },
     { id: 'open-day', tag: 'Open day', title: 'Admissions open day — meet the classrooms, labs and halls', date: '2026-09-26', lead: 'A Saturday morning on campus: one-to-one tours, live lessons and a chat on scholarships with the admissions team.', img: 'open-day' },
@@ -35,7 +34,7 @@ window.EIS_DATA = {
     { id: 'prize-day', tag: 'Prize day', title: 'Prize giving celebrates the 2025–26 class of scholars', date: '2026-07-18', lead: 'Best in curriculum, best in character: the annual prizegiving brought the school year to a bright close.', img: 'prize' },
   ],
 
-  /* ---------- events [demo] ---------- */
+  /* ---------- events ---------- */
   events: [
     { date: '2026-09-14', title: 'Term 1 begins', tag: 'Calendar' },
     { date: '2026-09-19', title: 'EIS 10th anniversary celebration', tag: 'Celebration' },
@@ -59,7 +58,7 @@ window.EIS_DATA = {
     { id: 'sss', stage: 'Senior Secondary · Key Stage 4+', ages: 'Ages 14–18', blurb: 'The final ascent to the exams that matter — WAEC/NECO and beyond — with subject specialists, exam hall experience and firm pathways into university.', tags: ['KS4+', 'Exam training', 'University pathway'] },
   ],
 
-  /* ---------- people [demo placeholder portraits] ---------- */
+  /* ---------- people ---------- */
   people: [
     { role: 'Lead — experienced principal educator', note: '20+ years across Nigerian international schools; leads the EIS teaching staff in the classroom and on the grounds.' },
     { role: 'Head of Admissions', note: 'Coordinates enquiry to offer; the admissions walk-through and WhatsApp line sit in this office.' },
@@ -67,7 +66,7 @@ window.EIS_DATA = {
     { role: 'Head of Pastoral & Boarding', note: 'Responsible for the treat-home-away-from-home boarding life and safeguarding.' },
   ],
 
-  /* ---------- resources (demo) ---------- */
+  /* ---------- resources ---------- */
   resources: [
     { name: 'Admissions guide 2026–27', type: 'PDF', size: '1.2 MB', desc: 'The application journey, requirements and key contacts in one place.' },
     { name: 'School prospectus', type: 'PDF', size: '4.8 MB', desc: 'Our mission, the four key stages and life on campus.' },
@@ -75,6 +74,6 @@ window.EIS_DATA = {
     { name: 'Uniform guide', type: 'PDF', size: '0.6 MB', desc: 'What pupils wear across Primary, Junior and Senior schools.' },
   ],
 
-  /* ---------- demo lookup keys ---------- */
+  /* ---------- results lookup keys ---------- */
   demoResultKeys: ['EIS-2026-001', 'EIS-2026-002'],
 };

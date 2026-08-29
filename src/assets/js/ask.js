@@ -83,21 +83,49 @@
     return () => b.remove();
   };
 
-  const answer = (q) => {
+  const localAnswer = (q) => {
     const t = q.toLowerCase();
     const hit = intents.find((r) => r.keys.some((k) => t.includes(k)));
     if (hit) return hit.out;
     return `<span style="color:var(--saffron-2)">I don’t have that information to hand.</span> The Admissions Office can help: <strong>${P.primary || ''}</strong> or <strong>${P.whatsapp || P.primary || ''}</strong> on WhatsApp.`;
   };
 
-  const say = (html, delay = 620) => {
+  const plainTextHtml = (text) => text.replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[char])).replace(/\n/g, '<br>');
+
+  const groqAnswer = async (q) => {
+    const response = await fetch('/chat.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: q }),
+    });
+    if (!response.ok) throw new Error('Chat request failed');
+    const data = await response.json();
+    if (!data.answer) throw new Error('Chat response was empty');
+    return plainTextHtml(data.answer);
+  };
+
+  const say = async (q, delay = 620) => {
     const done = typing();
-    setTimeout(() => { done(); bubble('bot', html); }, delay);
+    try {
+      const html = await Promise.race([
+        groqAnswer(q),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Chat request timed out')), 12000)),
+      ]);
+      setTimeout(() => { done(); bubble('bot', html); }, delay);
+    } catch {
+      setTimeout(() => { done(); bubble('bot', localAnswer(q)); }, delay);
+    }
   };
 
   const push = (q) => {
     bubble('user', q.replace(/[<>]/g, ''));
-    say(answer(q));
+    say(q);
   };
 
   const greet = () => {

@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "start": "node server.mjs",
     "serve": "node scripts/serve.mjs",
     "smoke": "npm run build && node scripts/smoke.mjs",
     "shots": "npm run build && node scripts/viewport-shots.mjs",

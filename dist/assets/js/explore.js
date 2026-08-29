@@ -17,7 +17,7 @@
   const sWrite = (v) => { try { sessionStorage.setItem(sKey, v); } catch (e) { /* private mode */ } };
   const sRead  = ()   => { try { return sessionStorage.getItem(sKey); } catch (e) { return null; } };
 
-  /* ---------------- persona data (demo copy) ---------------- */
+  /* ---------------- persona data ---------------- */
   const ORDER = ['parent', 'student', 'prospective', 'teacher'];
 
   const PERSONAS = {
@@ -26,7 +26,7 @@
       welcome: 'Welcome, Parent.',
       headline: 'Your child’s journey starts here.',
       intro: 'Everything on campus is arranged around one idea — that every child can learn and succeed. Here is what matters to your family, in the order that matters.',
-      image: { src: '/assets/img/people/persona-parent.svg', alt: 'An illustration of a parent with a child — a placeholder for a real photograph', note: 'Dummy image — a real photograph replaces this at launch.' },
+      image: { src: '/assets/img/people/persona-parent.svg', alt: 'Parent and child at school' },
       primary: { label: 'Explore Academics', href: '/learning' },
       secondary: { label: 'Parent Hub', href: '/parents' },
       priorities: [
@@ -36,7 +36,7 @@
         ['Facilities', '/facilities', 'Three science labs, a library, dining halls and playing fields.'],
         ['Parent Information', '/parents', 'Reports, notices and the parents’ forum.'],
         ['School Calendar', '/parents#termCalendar', 'Term dates and the shape of the school year.'],
-        ['Results Portal', '/parents#results', 'Grades and exam records — sample data in this demo only.'],
+        ['Results Portal', '/parents#results', 'Secure access to grades and exam records.'],
         ['Contact School', '/contact', 'The office is a call or WhatsApp away.']
       ],
       band: {
@@ -54,7 +54,7 @@
       welcome: 'Welcome, Student.',
       headline: 'Discover your potential.',
       intro: 'A school day built for ambition and curiosity: lessons that stretch you, teams that need you and clubs that make the place feel like yours.',
-      image: { src: '/assets/img/people/persona-student.svg', alt: 'An illustration of a student with a folder — a placeholder for a real photograph', note: 'Dummy image — a real photograph replaces this at launch.' },
+      image: { src: '/assets/img/people/persona-student.svg', alt: 'Student carrying a folder at school' },
       primary: { label: 'Discover Student Life', href: '/life' },
       secondary: { label: 'Explore Activities', href: '/life#clubs' },
       priorities: [
@@ -82,7 +82,7 @@
       welcome: 'Welcome to EIS.',
       headline: 'Imagine your child here.',
       intro: 'See the school the way a family sees it for the first time: what we believe, what we offer, and the four simple steps from your first call to your child’s first day.',
-      image: { src: '/assets/img/people/persona-prospective.svg', alt: 'An illustration of a family visiting the school — a placeholder for a real photograph', note: 'Dummy image — a real photograph replaces this at launch.' },
+      image: { src: '/assets/img/people/persona-prospective.svg', alt: 'Family visiting the school' },
       primary: { label: 'Start Your Application', href: '/admissions#apply' },
       secondary: { label: 'Book a School Visit', href: '/admissions#visit' },
       priorities: [
@@ -109,7 +109,7 @@
       welcome: 'Welcome, Educator.',
       headline: 'Grow. Inspire. Make a difference.',
       intro: 'Teaching at EIS is real work and real care: small classes, bright students and a school that puts professional growth on the timetable.',
-      image: { src: '/assets/img/people/persona-teacher.svg', alt: 'An illustration of a teacher at a chalkboard — a placeholder for a real photograph', note: 'Dummy image — a real photograph replaces this at launch.' },
+      image: { src: '/assets/img/people/persona-teacher.svg', alt: 'Teacher working with students' },
       primary: { label: 'Explore Careers', href: '/careers' },
       secondary: { label: 'Meet Our Faculty', href: '/school#leadership' },
       priorities: [
@@ -194,7 +194,7 @@
         </ul>
       </div>
       ${band}
-      <p class="ev-foot">A personalised demo preview — every promise and date above is confirmed by the school office before launch.</p>`;
+      <p class="ev-foot">A personalised guide to the parts of EIS that matter most to you.</p>`;
   }
 
   /* ---------------- behaviour ---------------- */

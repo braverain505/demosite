@@ -1,8 +1,7 @@
 /* ============================================================
-   EIS — ask.js · “Ask EIS” demo assistant
+  EIS — ask.js · “Ask EIS” assistant
    A front-end rule-based Q&A over the EIS knowledge base
-   (window.EIS_DATA). Clearly labelled as a demo widget, not live
-   AI. Swap this file for a real backend call later.
+  (window.EIS_DATA). Provides quick answers to common questions.
    ============================================================ */
 (() => {
   'use strict';
@@ -36,9 +35,9 @@
     transport: `<strong>Transport.</strong> School transport is arranged by the school office; routes are shared with enrolling families. Contact us via <a href="/contact">Contact</a> for the latest routes.`,
     facility: `<strong>Facilities</strong> include three science laboratories, dining and exam halls, libraries, sports grounds and computer rooms. Take the <a href="/facilities">campus tour</a>.`,
     contact: `<strong>Contact.</strong> Shavali Mile 6, Jalingo, Taraba State, Nigeria. Phone <strong>${P.primary || '+234 809 925 3111'}</strong>, WhatsApp same, email <strong>${D.email || 'info@eisjalingo.com'}</strong>.`,
-    staff: `<strong>Our people.</strong> Leadership and faculty profiles live on the <a href="/school">About</a> page; specific staff leads are confirmed by the school office.`,
-    calendar: `<strong>Calendar.</strong> Term dates, open days and exam weeks are on the <a href="/parents">Parents</a> page and can be exported as a calendar file (demo).`,
-    results: `<strong>Results lookup.</strong> Parents can preview results with the demo lookup on the <a href="/parents#results">Parents</a> page — try <span class="t-num">EIS-2026-001</span> or <span class="t-num">EIS-2026-002</span>.`,
+    staff: `<strong>Our people.</strong> Leadership and faculty profiles live on the <a href="/school">About</a> page. Contact the school office for staff enquiries.`,
+    calendar: `<strong>Calendar.</strong> Term dates, open days and exam weeks are on the <a href="/parents">Parents</a> page and can be exported as a calendar file.`,
+    results: `<strong>Results lookup.</strong> Parents can access term results on the <a href="/parents#results">Parents</a> page using the reference on the report card.`,
     uniform: `<strong>Uniform</strong> is required from Primary upwards; prefects wear a distinct uniform. Full details are shared after admission.`,
     house: `<strong>Houses &amp; clubs.</strong> Every pupil belongs to a house and can join clubs including leadership, journalism, science and sports. More on <a href="/life">Student Life</a>.`,
     alumni: `<strong>Alumni.</strong> Our first alumni have moved from Primary through to Senior Secondary — now across Nigeria. Reunion events run through the year.`,
@@ -84,28 +83,56 @@
     return () => b.remove();
   };
 
-  const answer = (q) => {
+  const localAnswer = (q) => {
     const t = q.toLowerCase();
     const hit = intents.find((r) => r.keys.some((k) => t.includes(k)));
     if (hit) return hit.out;
-    return `<span style="color:var(--saffron-2)">I’m not sure about that one — my demo knowledge base is limited.</span> For anything else, the admissions office is a call away: <strong>${P.primary || ''}</strong> or <strong>${P.whatsapp || P.primary || ''}</strong> on WhatsApp.`;
+    return `<span style="color:var(--saffron-2)">I don’t have that information to hand.</span> The Admissions Office can help: <strong>${P.primary || ''}</strong> or <strong>${P.whatsapp || P.primary || ''}</strong> on WhatsApp.`;
   };
 
-  const say = (html, delay = 620) => {
+  const plainTextHtml = (text) => text.replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[char])).replace(/\n/g, '<br>');
+
+  const groqAnswer = async (q) => {
+    const response = await fetch('/chat.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: q }),
+    });
+    if (!response.ok) throw new Error('Chat request failed');
+    const data = await response.json();
+    if (!data.answer) throw new Error('Chat response was empty');
+    return plainTextHtml(data.answer);
+  };
+
+  const say = async (q, delay = 620) => {
     const done = typing();
-    setTimeout(() => { done(); bubble('bot', html); }, delay);
+    try {
+      const html = await Promise.race([
+        groqAnswer(q),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Chat request timed out')), 12000)),
+      ]);
+      setTimeout(() => { done(); bubble('bot', html); }, delay);
+    } catch {
+      setTimeout(() => { done(); bubble('bot', localAnswer(q)); }, delay);
+    }
   };
 
   const push = (q) => {
     bubble('user', q.replace(/[<>]/g, ''));
-    say(answer(q));
+    say(q);
   };
 
   const greet = () => {
     msgs.innerHTML = '';
-    bubble('bot', `Hello! I’m <strong>Ask EIS</strong> — a demo preview of our admissions assistant, powered by rules (not live AI).<br><br>Ask about programmes, fees, boarding, transport, facilities or the calendar — or tap a question.`);
+    bubble('bot', `Hello! I’m <strong>Ask EIS</strong>. I can help with programmes, fees, boarding, transport, facilities and the calendar.<br><br>Ask a question or choose one below.`);
     setSugs(['What are the fees?', 'How do I apply?', 'Is boarding available?', 'What are the term dates?', 'How do I reach the school?']);
-    if (foot) foot.innerHTML = `<span class="pulse-dot"></span> Demo preview · answers are rule-based`;
+    if (foot) foot.innerHTML = `<span class="pulse-dot"></span> Ask EIS · school information assistant`;
   };
 
   const setSugs = (items) => {
