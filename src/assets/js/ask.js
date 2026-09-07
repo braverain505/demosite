@@ -34,7 +34,7 @@
     boarding: `<strong>Boarding</strong> is available — a “home away from home” with cared-for residential life, dining halls and evening study. Ask the Admissions Office for the boarding schedule.`,
     transport: `<strong>Transport.</strong> School transport is arranged by the school office; routes are shared with enrolling families. Contact us via <a href="/contact">Contact</a> for the latest routes.`,
     facility: `<strong>Facilities</strong> include three science laboratories, dining and exam halls, libraries, sports grounds and computer rooms. Take the <a href="/facilities">campus tour</a>.`,
-    contact: `<strong>Contact.</strong> Shavali Mile 6, Jalingo, Taraba State, Nigeria. Phone <strong>${P.primary || '+234 809 925 3111'}</strong>, WhatsApp same, email <strong>${D.email || 'info@eisjalingo.com'}</strong>.`,
+    contact: `<strong>Contact.</strong> Shavon Mile 6, Jalingo, Taraba State, Nigeria. Phone &amp; WhatsApp <strong>${P.primary || '+234 803 087 5393'}</strong>, email <strong>${D.email || 'principal@eisjalingo.com'}</strong>.`,
     staff: `<strong>Our people.</strong> Leadership and faculty profiles live on the <a href="/school">About</a> page. Contact the school office for staff enquiries.`,
     calendar: `<strong>Calendar.</strong> Term dates, open days and exam weeks are on the <a href="/parents">Parents</a> page and can be exported as a calendar file.`,
     results: `<strong>Results lookup.</strong> Parents can access term results on the <a href="/parents#results">Parents</a> page using the reference on the report card.`,

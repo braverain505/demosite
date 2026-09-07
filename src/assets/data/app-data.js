@@ -7,15 +7,15 @@ window.EIS_DATA = {
 
   /* Contact details — from the official EIS site (live + archive) */
   contact: {
-    address: 'Shavali Mile 6, Jalingo, Taraba State, Nigeria',
-    addressShort: 'Shavali Mile 6 · Jalingo · Taraba',
-    email: 'info@eisjalingo.com',
+    address: 'Shavon Mile 6, Jalingo, Taraba State, Nigeria',
+    addressShort: 'Shavon Mile 6 · Jalingo · Taraba',
+    email: 'principal@eisjalingo.com',
   },
   phone: {
-    primary: '+234 809 925 3111',
-    alt: '+234 803 655 6278',
+    primary: '+234 803 087 5393',
+    alt: '+234 803 087 5393',
     alt2: '+234 803 087 5393',
-    whatsapp: '+234 809 925 3111',
+    whatsapp: '+234 803 087 5393',
   },
 
   /* Foundational statements — from the official EIS site */

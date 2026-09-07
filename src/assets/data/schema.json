@@ -10,11 +10,11 @@
   "description": "A Key Stages 1-4 school in Jalingo, Taraba State, Nigeria, balancing the British and Nigerian curricula across Nursery & Early Years, Primary, Junior Secondary and Senior Secondary, with day and boarding places.",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Shavali Mile 6",
+    "streetAddress": "Shavon Mile 6",
     "addressLocality": "Jalingo",
     "addressRegion": "Taraba State",
     "addressCountry": "NG"
   },
-  "telephone": ["+2348099253111", "+2348036556278", "+2348030875393"],
-  "email": "info@eisjalingo.com"
+  "telephone": ["+2348030875393"],
+  "email": "principal@eisjalingo.com"
 }

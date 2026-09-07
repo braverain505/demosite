@@ -117,7 +117,7 @@
     if (!heros.length || REDUCED) return;
     const medias = heros
       .map((h) => ({ hero: h, img: h.querySelector('.hero-media img, .hero-media svg') }))
-      .filter((x) => x.img);
+      .filter((x) => x.img && !x.hero.classList.contains('hero--slides')); // slideshow fades its own images
     if (!medias.length) return;
     document.body.classList.add('js-parallax'); // base scale to hide crop edges
     const STYLE = 'translate3d(0, %px, 0) scale(1.1)';
