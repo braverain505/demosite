@@ -540,6 +540,22 @@
     });
   });
 
+  /* ---------------- newsletter signup (homepage + newsletters page) ---------------- */
+  onReady(() => {
+    $$('#homeNewsletter, #nlSignup').forEach((form) => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = form.querySelector('input[type=email]');
+        if (!email || !email.value.trim()) { toast('Please add your email address.'); return; }
+        form.classList.add('is-hidden');
+        const ok = form.querySelector('.form-ok');
+        if (ok) ok.classList.add('show');
+        toast('You are now subscribed to the EIS newsletter.');
+        email.value = '';
+      });
+    });
+  });
+
   /* ---------------- rotational loader (pre-launch) ---------------- */
   onReady(() => {
     const L = $('#jsLoader');

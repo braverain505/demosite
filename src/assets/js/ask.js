@@ -27,7 +27,7 @@
     program: `<strong>Programmes.</strong> EIS runs the British &amp; Nigerian curricula across four key stages — Nursery &amp; Early Years, Primary (Key Stage 1–2), Junior Secondary (Key Stage 3) and Senior Secondary (Key Stage 4+). See <a href="/learning">Learning &amp; Programmes</a>.`,
     key: `<strong>Key Stages 1–4.</strong> EIS follows the British &amp; Nigerian curricula from Key Stage 1 through Key Stage 4 — now in its 10th year (founded in 2016).`,
     ages: `<strong>Ages.</strong> Admission begins in Nursery &amp; Early Years and runs through to Senior Secondary (Key Stage 4+).`,
-    hours: `School hours and term dates are set by the academic office each term. <strong>Term dates for 2026–27</strong> are published on the <a href="/parents">Parents &amp; Calendar</a> page.`,
+    hours: `School hours and term dates are set by the academic office each term. <strong>Term dates for 2026–27</strong> are shared with families directly from the school office.`,
     fees: `<strong>Fees.</strong> Termly fees and the boarding option are confirmed directly by the Admissions Office — they vary by Key Stage. Complete the <a href="/admissions#enquiry">admissions enquiry</a> or message us on WhatsApp and we’ll share the current schedule.`,
     admission: `<strong>Admissions</strong> are open across all Key Stages. The journey: enquiry → application → assessment &amp; interview → offer. Start with the short <a href="/admissions">application form</a> on the admissions page.`,
     requirement: `<strong>Requirements.</strong> A completed application form, birth certificate, recent school report (for transfers) and a short assessment booked with the Admissions team.`,
@@ -36,11 +36,12 @@
     facility: `<strong>Facilities</strong> include three science laboratories, dining and exam halls, libraries, sports grounds and computer rooms. Take the <a href="/facilities">campus tour</a>.`,
     contact: `<strong>Contact.</strong> Shavon Mile 6, Jalingo, Taraba State, Nigeria. Phone &amp; WhatsApp <strong>${P.primary || '+234 803 087 5393'}</strong>, email <strong>${D.email || 'principal@eisjalingo.com'}</strong>.`,
     staff: `<strong>Our people.</strong> Leadership and faculty profiles live on the <a href="/school">About</a> page. Contact the school office for staff enquiries.`,
-    calendar: `<strong>Calendar.</strong> Term dates, open days and exam weeks are on the <a href="/parents">Parents</a> page and can be exported as a calendar file.`,
-    results: `<strong>Results lookup.</strong> Parents can access term results on the <a href="/parents#results">Parents</a> page using the reference on the report card.`,
+    calendar: `<strong>Calendar.</strong> Term dates, open days and exam weeks are shared with families by the school office — ask the office for the current calendar.`,
+    results: `<strong>Results lookup.</strong> Term results are shared with families by the school office — contact the office with the reference from the report card.`,
     uniform: `<strong>Uniform</strong> is required from Primary upwards; prefects wear a distinct uniform. Full details are shared after admission.`,
     house: `<strong>Houses &amp; clubs.</strong> Every pupil belongs to a house and can join clubs including leadership, journalism, science and sports. More on <a href="/life">Student Life</a>.`,
     alumni: `<strong>Alumni.</strong> Our first alumni have moved from Primary through to Senior Secondary — now across Nigeria. Reunion events run through the year.`,
+    newsletters: `<strong>Newsletters.</strong> The latest school newsletters are on the <a href="/newsletters">Newsletters</a> page — uploads are added each term.`,
     hint: `Want the next step? The Admissions team also runs a WhatsApp walk-through — message <strong>${P.whatsapp || P.primary || 'the office'}</strong> directly.`,
   };
 
@@ -58,6 +59,8 @@
     { keys: ['staff', 'teacher', 'head', 'principal', 'leadership', 'who runs'], out: secrets.staff },
     { keys: ['result', 'report card', 'grade', 'gpa', 'lookup'], out: secrets.results },
     { keys: ['calendar', 'term date', 'holiday', 'closing', 'event', 'open day'], out: secrets.calendar },
+    { keys: ['newsletter', 'news letters', 'news-letter'], out: secrets.newsletters },
+    { keys: ['newsletter', 'news letters', 'news-letter'], out: secrets.newsletters },
     { keys: ['contact', 'phone', 'email', 'address', 'reach', 'call', 'talk'], out: secrets.contact },
     { keys: ['alumni', 'old student', 'graduate'], out: secrets.alumni },
   ];

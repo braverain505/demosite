@@ -87,6 +87,23 @@ button.lb-item { border: 0; background: none; padding: 0; color: inherit; width:
   opacity: 0.16; user-select: none; white-space: nowrap;
 }
 .eyebrow-num { font-family: var(--serif); font-weight: 600; color: var(--saffron-2); font-size: 1.05rem; }
+.req { color: var(--red); }
+.optional { color: var(--muted); font-weight: 400; font-size: .85em; }
+
+/* ---------- newsletter drop zone ---------- */
+.drop-zone {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .6rem; min-height: 120px; padding: 1.2rem;
+  border: 2px dashed var(--line); border-radius: var(--r-md);
+  background: var(--paper-2); color: var(--ink-2); text-align: center;
+  cursor: pointer; transition: background 200ms var(--ease), border-color 200ms var(--ease);
+}
+.drop-zone.is-active { background: var(--paper); border-color: var(--saffron); color: var(--ink); }
+.drop-zone span { font-size: .95rem; }
+.drop-zone .text-link { color: var(--saffron-2); }
+.drop-zone .arr { font-size: .78rem; }
+.drop-zone svg { color: var(--muted); }
+.drop-zone.is-active svg { color: var(--saffron); }
 
 /* ---------- CTA band ---------- */
 .cta-band {
