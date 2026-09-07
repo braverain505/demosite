@@ -39,7 +39,7 @@
     calendar: `<strong>Calendar.</strong> Term dates, open days and exam weeks are shared with families by the school office — ask the office for the current calendar.`,
     results: `<strong>Results lookup.</strong> Term results are shared with families by the school office — contact the office with the reference from the report card.`,
     uniform: `<strong>Uniform</strong> is required from Primary upwards; prefects wear a distinct uniform. Full details are shared after admission.`,
-    house: `<strong>Houses &amp; clubs.</strong> Every pupil belongs to a house and can join clubs including leadership, journalism, science and sports. More on <a href="/life">Student Life</a>.`,
+    house: `<strong>Houses &amp; clubs.</strong> Every pupil belongs to a house and can join clubs including leadership, journalism, science and sports. More on <a href="/facilities">Campus &amp; Facilities</a>.`,
     alumni: `<strong>Alumni.</strong> Our first alumni have moved from Primary through to Senior Secondary — now across Nigeria. Reunion events run through the year.`,
     newsletters: `<strong>Newsletters.</strong> The latest school newsletter is at the top of the <a href="/news#newsletter">News</a> page — uploads are added each term.`,
     hint: `Want the next step? The Admissions team also runs a WhatsApp walk-through — message <strong>${P.whatsapp || P.primary || 'the office'}</strong> directly.`,

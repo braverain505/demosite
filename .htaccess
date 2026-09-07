@@ -1,0 +1,25 @@
+# EIS — cPanel deployment
+# Serves the static build with clean extension-less URLs (/school → school.html)
+# and redirects removed pages to their replacements.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ---- Redirects for removed / renamed pages ----
+  RewriteRule ^newsletters/?$ /news#newsletter [R=301,L,NE]
+  RewriteRule ^parents/?$ /news [R=301,L]
+  RewriteRule ^life/?$ /facilities [R=301,L]
+  RewriteRule ^life/.*$ /facilities [R=301,L]
+
+  # ---- Clean URLs: /school → school.html ----
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !\.html?$ [NC]
+  RewriteRule ^([^/.]+)/?$ $1.html [L,QSA]
+</IfModule>
+
+# ---- Prevent directory listings ----
+Options -Indexes
+
+# ---- Default character set ----
+AddDefaultCharset UTF-8

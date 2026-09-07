@@ -32,7 +32,7 @@
       priorities: [
         ['Academic Programmes', '/learning', 'A British & Nigerian curriculum across Key Stages 1–4, taught by subject specialists.'],
         ['Student Development', '/school', 'Pastoral care, prefects and a moral & citizenship core that runs all day.'],
-        ['School Life', '/life', 'The day for assembly — lessons, meals, clubs and study.'],
+        ['Campus & Facilities', '/facilities', 'Labs, library, dining halls, boarding and playing fields.'],
         ['Facilities', '/facilities', 'Three science labs, a library, dining halls and playing fields.'],
         ['School Newsletters', '/news#newsletter', 'The latest newsletter and notices for families.'],
         ['Contact School', '/contact', 'The office is a call or WhatsApp away.']
@@ -53,17 +53,17 @@
       headline: 'Discover your potential.',
       intro: 'A school day built for ambition and curiosity: lessons that stretch you, teams that need you and clubs that make the place feel like yours.',
       image: { src: '/assets/img/people/persona-student.svg', alt: 'Student carrying a folder at school' },
-      primary: { label: 'Discover Student Life', href: '/life' },
-      secondary: { label: 'Explore Activities', href: '/life#clubs' },
+      primary: { label: 'Explore the Campus', href: '/facilities' },
+      secondary: { label: 'See What’s On', href: '/news' },
       priorities: [
         ['Academics', '/learning', 'Small classes, subject specialists and exam practice with a plan.'],
-        ['Clubs & Activities', '/life#clubs', 'Debate, journalism, chess, science and more — most afternoons.'],
+        ['Clubs & Activities', '/news', 'Debate, journalism, chess, science and more — most afternoons.'],
         ['Sports', '/facilities', 'Football, athletics and inter-house rivalry.'],
-        ['Arts & Creativity', '/life', 'Music, drama and art through the year.'],
+        ['Arts & Creativity', '/news', 'Music, drama and art through the year.'],
         ['Leadership', '/school#leadership', 'Prefects, house captains and head boys and girls.'],
-        ['Student Life', '/life', 'The day in and out of the classroom.'],
+        ['Campus & Facilities', '/facilities', 'Labs, a library, dining halls and playing fields.'],
         ['Events', '/news', 'Open days, science fairs and celebrations.'],
-        ['Learning Resources', '/life', 'Labs, a library and subject specialists.']
+        ['Learning Resources', '/facilities', 'Labs, a library and subject specialists.']
       ],
       band: {
         title: 'A taste of the place',
@@ -88,7 +88,7 @@
         ['Academic Programmes', '/learning', 'British & Nigerian curricula across Key Stages 1–4.'],
         ['Facilities', '/facilities', 'Three labs, a library, dining halls and playing fields.'],
         ['Faculty', '/school#leadership', 'A teaching team led by an experienced head.'],
-        ['School Life', '/life', 'The rhythm of a full school day.'],
+        ['Campus & Facilities', '/facilities', 'Labs, a library, dining halls and playing fields.'],
         ['Admissions Requirements', '/admissions', 'Entry stages and what we ask of families.'],
         ['Admissions Process', '/admissions', 'Four clear steps, from first call to first day.'],
         ['Campus Tour', '/admissions#visit', 'Walk the campus with us on an open day.'],

@@ -4,7 +4,7 @@
 import { chromium } from 'playwright';
 import { spawn } from 'node:child_process';
 const PORT = 4183;
-const PAGES = ['/', '/school', '/learning', '/life', '/facilities', '/admissions', '/parents', '/news', '/careers', '/contact'];
+const PAGES = ['/', '/school', '/learning', '/facilities', '/admissions', '/news', '/careers', '/contact'];
 const child = spawn('node', ['scripts/serve.mjs'], { cwd: process.cwd(), env: { ...process.env, PORT: String(PORT) }, stdio: 'ignore' });
 const wait = () => new Promise((res) => { const t = setInterval(() => { fetch(`http://localhost:${PORT}/`).then(() => { clearInterval(t); res(); }).catch(() => {}); }, 150); });
 await wait();

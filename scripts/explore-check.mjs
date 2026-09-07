@@ -105,7 +105,7 @@ console.log('\n== warm-up (cold-start Chromium) ==');
 }
 
 console.log('\n== A. all pages console-clean (desktop) ==');
-for (const p of ['/', '/school', '/learning', '/life', '/facilities', '/admissions', '/parents', '/news', '/careers', '/contact']) {
+for (const p of ['/', '/school', '/learning', '/facilities', '/admissions', '/news', '/careers', '/contact']) {
   const page = await mkPage({ width: 1440, height: 900 });
   try {
     const errs = await collectErrors(page, p);
@@ -194,9 +194,9 @@ console.log('\n== A3. session persistence + sitewide personalization ==');
     });
     tagVisible ? ok('"For you" tag visible on student cards') : bad('no "For you" tag for student');
 
-    await page.goto(url('/life'), { waitUntil: 'load' });
+    await page.goto(url('/facilities'), { waitUntil: 'load' });
     const doc = await page.evaluate(() => document.documentElement.getAttribute('data-persona'));
-    doc === 'student' ? ok('persona persists on /life') : bad('life persona: ' + doc);
+    doc === 'student' ? ok('persona persists on /facilities') : bad('facilities persona: ' + doc);
     const el = errs.done();
     el.length ? bad(`A3 interaction errors: ${el[0]?.slice(0, 120)}`) : ok('no console errors across reload + nav');
   } catch (e) {

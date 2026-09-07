@@ -6,6 +6,16 @@
       "source": "/newsletters",
       "destination": "/news#newsletter",
       "permanent": true
+    },
+    {
+      "source": "/life",
+      "destination": "/facilities",
+      "permanent": true
+    },
+    {
+      "source": "/life/:path*",
+      "destination": "/facilities",
+      "permanent": true
     }
   ]
 }

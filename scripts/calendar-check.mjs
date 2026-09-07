@@ -46,7 +46,7 @@ try {
   page.setDefaultNavigationTimeout(120000);
   // cold-start hang workaround: one throwaway nav warms Chromium up
   await page.goto(`http://${HOST}:${PORT}/`, { waitUntil: 'load' });
-  await page.goto(`http://${HOST}:${PORT}/parents`, { waitUntil: 'load' });
+  await page.goto(`http://${HOST}:${PORT}/news`, { waitUntil: 'load' });
   await page.waitForTimeout(600);
 
   // --- expanded month-block structure ---

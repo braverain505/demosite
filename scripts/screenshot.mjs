@@ -16,10 +16,8 @@ const PAGES = [
   ['index', '/'],
   ['school', '/school'],
   ['learning', '/learning'],
-  ['life', '/life'],
   ['facilities', '/facilities'],
   ['admissions', '/admissions'],
-  ['parents', '/parents'],
   ['news', '/news'],
   ['contact', '/contact'],
 ];

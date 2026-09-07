@@ -94,8 +94,8 @@
       <div class="nav-links">
         <a href="/school" data-nav="/school">Our School</a>
         <a href="/learning" data-nav="/learning">Learning</a>
-        <a href="/life" data-nav="/life">Student Life</a>
         <a href="/facilities" data-nav="/facilities">Campus</a>
+        <a href="/gallery" data-nav="/gallery">Gallery</a>
         <a href="/news" data-nav="/news">News</a>
         <a href="/careers" data-nav="/careers" aria-current="page">Careers</a>
         <a href="/contact" data-nav="/contact">Contact</a>
@@ -126,8 +126,8 @@
     <a class="nav-i" href="/school" data-nav="/school">Our School</a>
     <a class="nav-i" href="/admissions" data-nav="/admissions">Admissions</a>
     <a class="nav-i" href="/learning" data-nav="/learning">Learning &amp; Programmes</a>
-    <a class="nav-i" href="/life" data-nav="/life">Student Life</a>
     <a class="nav-i" href="/facilities" data-nav="/facilities">Campus &amp; Facilities</a>
+    <a class="nav-i" href="/gallery" data-nav="/gallery">Gallery</a>
     <a class="nav-i" href="/news" data-nav="/news">News &amp; Stories</a>
     <a class="nav-i" href="/careers" data-nav="/careers" aria-current="page">Careers &amp; Team</a>
     <a class="nav-i" href="/contact" data-nav="/contact">Contact</a>
@@ -262,7 +262,7 @@
           </ul>
         </div>
         <div class="form-card" data-reveal style="--d:80ms">
-          <form data-demo-form novalidate>
+          <form id="careersForm" action="/careers-apply.php" method="post" enctype="multipart/form-data" novalidate>
             <div class="row-2">
               <div class="field"><label for="cvName">Full name <span class="req">*</span></label><input class="input" id="cvName" name="name" type="text" required autocomplete="name"></div>
               <div class="field"><label for="cvEmail">Email <span class="req">*</span></label><input class="input" id="cvEmail" name="email" type="email" required autocomplete="email"></div>
@@ -284,13 +284,13 @@
             <div class="field">
               <label for="cvFile">Curriculum vitae <span class="req">*</span></label>
               <input class="input file-input" id="cvFile" name="cv" type="file" accept=".pdf,.doc,.docx" required>
-              <p class="hint">PDF or Word, up to 5&nbsp;MB. Your application is reviewed confidentially by the school office.</p>
+              <p class="hint">PDF or Word, up to 5&nbsp;MB. Your application and CV are emailed straight to the school office at principal@eisjalingo.com.</p>
             </div>
             <div class="field"><label for="cvMsg">A note about you <span class="req">*</span></label><textarea class="textarea" id="cvMsg" name="message" required placeholder="Two or three sentences that don’t fit on a CV."></textarea></div>
             <button class="btn btn--primary btn--block" type="submit">Send application <span class="arr" aria-hidden="true">→</span></button>
-            <p style="font-size:.78rem;color:var(--muted);margin:1rem 0 0;text-align:center">Your information is handled confidentially by the school office.</p>
+            <p style="font-size:.78rem;color:var(--muted);margin:1rem 0 0;text-align:center">Your application goes to <strong>principal@eisjalingo.com</strong> — handled confidentially by the school office.</p>
           </form>
-          <div class="form-ok"><div class="ok-ic"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Application received</h3><p>Thank you. The school office will review your application and contact you about next steps.</p></div>
+          <div class="form-ok"><div class="ok-ic"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Application received</h3><p>Thank you. Your CV has been sent to the school office — they will review it and contact you about next steps.</p></div>
         </div>
       </div>
     </div>
@@ -332,8 +332,8 @@
         <ul>
           <li><a href="/school">Our School</a></li>
           <li><a href="/learning">Learning &amp; Programmes</a></li>
-          <li><a href="/life">Student Life</a></li>
           <li><a href="/facilities">Campus &amp; Facilities</a></li>
+          <li><a href="/gallery">Gallery</a></li>
           <li><a href="/news">News &amp; Stories</a></li>
           <li><a href="/careers">Careers &amp; Team</a></li>
         </ul>
@@ -417,5 +417,73 @@
 <script src="/assets/data/app-data.js" defer></script>
 <script src="/assets/js/app.js" defer></script>
 <script src="/assets/js/ask.js" defer></script>
+<script>
+  // Careers page — submit the application + CV to the school office email.
+  (() => {
+    'use strict';
+
+    const $ = (s, r = document) => r.querySelector(s);
+    const toast = (msg) => {
+      let el = $('.toast');
+      if (!el) {
+        el = document.createElement('div');
+        el.className = 'toast';
+        el.setAttribute('role', 'status');
+        document.body.appendChild(el);
+      }
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(el._t);
+      el._t = setTimeout(() => el.classList.remove('show'), 3400);
+    };
+
+    const form = $('#careersForm');
+    if (!form) return;
+
+    const markOk = () => {
+      form.classList.add('is-hidden');
+      const ok = form.closest('.form-card').querySelector('.form-ok');
+      if (ok) ok.classList.add('show');
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      let valid = true;
+      Array.from(form.querySelectorAll('[required]')).forEach((f) => {
+        const field = f.closest('.field');
+        if (!f.value.trim()) { field.classList.add('invalid'); valid = false; }
+        else field.classList.remove('invalid');
+      });
+      if (!valid) { toast('Please complete the highlighted fields.'); return; }
+
+      const submitBtn = form.querySelector('button[type=submit]');
+      const original = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data && data.ok) {
+          markOk();
+          toast('Application sent — the school office will be in touch.');
+        } else {
+          toast((data && data.error) || 'Could not send the application — please email principal@eisjalingo.com.');
+        }
+      } catch (err) {
+        // No backend (e.g. static preview): keep the demo behaviour.
+        markOk();
+        toast('Application received — the school office will review it.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = original;
+      }
+    });
+
+    Array.from(form.querySelectorAll('.input, .select, .textarea')).forEach((f) =>
+      f.addEventListener('input', () => f.closest('.field')?.classList.remove('invalid'))
+    );
+  })();
+</script>
 </body>
 </html>

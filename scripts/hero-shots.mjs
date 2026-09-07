@@ -18,7 +18,7 @@ const PAGES = [
   ['school', '/school'],
   ['facilities', '/facilities'],
   ['admissions', '/admissions'],
-  ['parents', '/parents'],
+  ['news', '/news'],
   ['contact', '/contact'],
 ];
 
