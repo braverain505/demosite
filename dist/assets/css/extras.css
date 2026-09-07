@@ -105,6 +105,101 @@ button.lb-item { border: 0; background: none; padding: 0; color: inherit; width:
 .drop-zone svg { color: var(--muted); }
 .drop-zone.is-active svg { color: var(--saffron); }
 
+/* ---------- newsletter issue ---------- */
+.nl-issue { border-top: 1px solid var(--line); padding-top: clamp(1.6rem, 4vw, 2.6rem); }
+
+.nl-header {
+  text-align: center; margin-bottom: clamp(2rem, 5vw, 3rem);
+  border-bottom: 1px solid var(--line); padding-bottom: clamp(1.2rem, 3vw, 1.8rem);
+}
+.nl-eyebrow {
+  display: flex; align-items: center; justify-content: center; gap: .8rem;
+  margin-bottom: .8rem; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted);
+}
+.nl-logo-mark {
+  display: inline-grid; place-items: center; width: 36px; height: 36px;
+  border-radius: var(--r-sm); background: var(--saffron); color: #fff;
+  font-family: var(--serif); font-weight: 700; font-size: 1rem; letter-spacing: .02em;
+}
+.nl-divider { width: 4px; height: 4px; border-radius: 50%; background: var(--saffron); }
+.nl-issue-meta { font-family: var(--serif); color: var(--ink-2); }
+
+.nl-title {
+  font-family: var(--serif); font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  font-weight: 700; color: var(--ink); margin: 0 0 .5rem; line-height: 1.15;
+}
+.nl-subtitle {
+  font-size: .92rem; color: var(--muted); margin: 0;
+}
+
+.nl-letter {
+  max-width: 680px; margin: 0 auto clamp(2rem, 5vw, 3rem);
+  font-size: .98rem; line-height: 1.7; color: var(--ink-2);
+}
+.nl-salutation { font-weight: 600; color: var(--ink); margin-bottom: 1rem; }
+.nl-letter p { margin: 0 0 1.1rem; }
+.nl-letter p:last-child { margin-bottom: 0; }
+
+.pull-quote {
+  font-family: var(--serif); font-style: italic; color: var(--saffron-2);
+  border-left: 3px solid var(--saffron); padding-left: .8rem;
+  display: inline-block;
+}
+
+.nl-sign-off {
+  margin-top: 1.6rem; font-style: italic; color: var(--ink);
+}
+.nl-signature {
+  margin-top: .5rem; display: flex; flex-direction: column;
+  border-top: 1px solid var(--line); padding-top: .6rem;
+}
+.nl-signature-name { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; color: var(--ink); }
+.nl-signature-role { font-size: .82rem; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+
+/* ---------- newsletter timeline ---------- */
+.nl-dates { max-width: 720px; margin: 0 auto; }
+.nl-dates-title {
+  font-family: var(--serif); font-size: 1.4rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 1.2rem; text-align: center;
+}
+
+.nl-timeline { border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; background: var(--paper); }
+
+.nl-timeline-group { border-bottom: 1px solid var(--line); }
+.nl-timeline-group:last-child { border-bottom: 0; }
+
+.nl-timeline-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: .8rem 1.2rem; background: var(--paper-2); border-bottom: 1px solid var(--line);
+}
+.nl-timeline-month {
+  font-family: var(--serif); font-weight: 700; font-size: .95rem; color: var(--ink);
+}
+.nl-timeline-range { font-size: .78rem; color: var(--muted); letter-spacing: .04em; }
+
+.nl-timeline-items { padding: .4rem 0; }
+
+.nl-timeline-item {
+  display: grid; grid-template-columns: 130px 1fr; gap: .6rem;
+  padding: .4rem 1.2rem; border-bottom: 1px solid var(--line);
+}
+.nl-timeline-item:last-child { border-bottom: 0; }
+
+.nl-td-date {
+  font-size: .8rem; font-weight: 600; color: var(--saffron-2);
+  white-space: nowrap; padding-top: .1rem;
+}
+.nl-td-event { font-size: .88rem; color: var(--ink-2); }
+
+@media (max-width: 520px) {
+  .nl-timeline-item {
+    grid-template-columns: 1fr; gap: .15rem;
+    padding: .5rem 1rem;
+  }
+  .nl-td-date { padding-top: 0; }
+}
+
 /* ---------- CTA band ---------- */
 .cta-band {
   position: relative; border-radius: var(--r-lg); padding: clamp(2rem, 5vw, 3.4rem);
