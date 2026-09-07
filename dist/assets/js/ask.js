@@ -41,7 +41,7 @@
     uniform: `<strong>Uniform</strong> is required from Primary upwards; prefects wear a distinct uniform. Full details are shared after admission.`,
     house: `<strong>Houses &amp; clubs.</strong> Every pupil belongs to a house and can join clubs including leadership, journalism, science and sports. More on <a href="/life">Student Life</a>.`,
     alumni: `<strong>Alumni.</strong> Our first alumni have moved from Primary through to Senior Secondary — now across Nigeria. Reunion events run through the year.`,
-    newsletters: `<strong>Newsletters.</strong> The latest school newsletters are on the <a href="/newsletters">Newsletters</a> page — uploads are added each term.`,
+    newsletters: `<strong>Newsletters.</strong> The latest school newsletter is at the top of the <a href="/news#newsletter">News</a> page — uploads are added each term.`,
     hint: `Want the next step? The Admissions team also runs a WhatsApp walk-through — message <strong>${P.whatsapp || P.primary || 'the office'}</strong> directly.`,
   };
 

@@ -28,13 +28,13 @@
       intro: 'Everything on campus is arranged around one idea — that every child can learn and succeed. Here is what matters to your family, in the order that matters.',
       image: { src: '/assets/img/people/persona-parent.svg', alt: 'Parent and child at school' },
       primary: { label: 'Explore Academics', href: '/learning' },
-      secondary: { label: 'Newsletter Hub', href: '/newsletters' },
+      secondary: { label: 'Newsletter Hub', href: '/news#newsletter' },
       priorities: [
         ['Academic Programmes', '/learning', 'A British & Nigerian curriculum across Key Stages 1–4, taught by subject specialists.'],
         ['Student Development', '/school', 'Pastoral care, prefects and a moral & citizenship core that runs all day.'],
         ['School Life', '/life', 'The day for assembly — lessons, meals, clubs and study.'],
         ['Facilities', '/facilities', 'Three science labs, a library, dining halls and playing fields.'],
-        ['School Newsletters', '/newsletters', 'The latest newsletters and notices for families.'],
+        ['School Newsletters', '/news#newsletter', 'The latest newsletter and notices for families.'],
         ['Contact School', '/contact', 'The office is a call or WhatsApp away.']
       ],
       band: {
