@@ -75,9 +75,9 @@ h4 { font-family: var(--sans); font-weight: 700; font-size: 1.02rem; letter-spac
 .section { padding-block: var(--sec-pad); position: relative; }
 .section--paper-2 { background: var(--paper-2); }
 .section--deep { background: var(--green-deep); color: var(--green-ink); }
-.section--deep h1, .section--deep h2, .section--deep h3, .section--deep .lead { color: #f4f1e6; }
-.section--deep .lead { color: #cddad0; }
-.section--green { background: var(--green); color: #eef5ee; }
+.section--deep h1, .section--deep h2, .section--deep h3, .section--deep .lead { color: #ffffff; }
+.section--deep .lead { color: #d3e2ef; }
+.section--green { background: var(--green); color: #ffffff; }
 .section--soft { background: var(--green-soft); }
 
 /* ---------- kickers / eyebrows ---------- */

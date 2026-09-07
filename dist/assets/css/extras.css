@@ -5,7 +5,7 @@
 /* ---------- Ask EIS: close button + typing + status ---------- */
 .ask-close {
   width: 30px; height: 30px; margin-left: auto; border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.35); background: none; color: #f4f1e6;
+  border: 1px solid rgba(255,255,255,0.35); background: none; color: #ffffff;
   display: grid; place-items: center; cursor: pointer; flex: none;
 }
 .ask-close:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
@@ -42,7 +42,7 @@
 }
 .cal-e.has-ev { background: var(--green-soft); border-color: var(--green); color: var(--green); font-weight: 700; }
 .cal-e.m { background: transparent; border-color: transparent; }
-.cal-e i { position: absolute; top: -4px; right: -4px; width: 15px; height: 15px; border-radius: 50%; background: var(--green); color: #f4f1e6; font-style: normal; font-size: 0.56rem; display: grid; place-items: center; }
+.cal-e i { position: absolute; top: -4px; right: -4px; width: 15px; height: 15px; border-radius: 50%; background: var(--green); color: #ffffff; font-style: normal; font-size: 0.56rem; display: grid; place-items: center; }
 .cal-list { list-style: none; padding: 0; margin: 0 0 1.4rem; display: grid; gap: 0.4rem; }
 .cal-list li { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; font-size: 0.88rem; }
 
@@ -91,15 +91,45 @@ button.lb-item { border: 0; background: none; padding: 0; color: inherit; width:
 /* ---------- CTA band ---------- */
 .cta-band {
   position: relative; border-radius: var(--r-lg); padding: clamp(2rem, 5vw, 3.4rem);
-  background: var(--green-deep); color: #eef3ea; overflow: hidden;
+  background: var(--green-deep); color: #dceaf5; overflow: hidden;
 }
-.cta-band h2 { color: #f4f1e6; }
-.cta-band p { color: #c3d3c5; }
-.cta-band .btn--paper { background: var(--saffron); color: #fff; }
-.cta-band .btn--paper:hover { background: var(--saffron-2); }
+.cta-band h2 { color: #ffffff; }
+.cta-band p { color: #c2d9e8; }
+.cta-band .btn--paper { background: #ffffff; color: var(--green-deep); }
+.cta-band .btn--paper:hover { background: #dcecf6; color: var(--green-deep); }
 
-/* ---------- print-safe dark hero text ---------- */
-.hero-kicker, .hero p, .hero b { color: inherit; }
+/* ---------- text over images must stay white in all themes ---------- */
+.hero .kicker,
+.hero h1,
+.hero #heroTitle,
+.hero h2,
+.hero h3,
+.hero p,
+.hero b,
+.hero .hero-proof b,
+.hero .hero-proof span,
+.section--deep h1,
+.section--deep h2,
+.section--deep h3,
+.section--deep .lead,
+.section--deep p,
+.section--deep li,
+.section--deep a,
+.cta-band h2,
+.cta-band p,
+.cta-band a {
+  color: #fff !important;
+}
+.cta-band .btn--paper,
+.section--deep .btn--paper {
+  background: #ffffff;
+  color: var(--green-deep) !important;
+}
+.cta-band .btn--paper:hover,
+.section--deep .btn--paper:hover {
+  background: #dcecf6;
+  color: var(--green-deep) !important;
+}
 
 /* ---------- page-transition loading bar ---------- */
 .nav-load {
@@ -111,7 +141,7 @@ button.lb-item { border: 0; background: none; padding: 0; color: inherit; width:
 .nav-load i {
   display: block; height: 100%; width: 0; border-radius: 0 3px 3px 0;
   background: linear-gradient(90deg, var(--saffron), var(--green));
-  box-shadow: 0 0 12px rgba(160, 108, 34, 0.55);
+  box-shadow: 0 0 12px rgba(13, 111, 168, 0.5);
 }
 .nav-load.is-on i { animation: nav-sweep 1s cubic-bezier(0.25, 0.6, 0.35, 1) 80ms forwards; }
 @keyframes nav-sweep {

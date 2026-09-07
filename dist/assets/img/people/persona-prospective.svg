@@ -2,10 +2,10 @@
   <title id="t">A family considering the school — illustrated, a placeholder for a real photograph</title>
   <defs>
     <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#b0e0f9"/><stop offset=".58" stop-color="#ecf6fe"/><stop offset="1" stop-color="#f6f0e1"/>
+      <stop offset="0" stop-color="#b0e0f9"/><stop offset=".58" stop-color="#ecf6fe"/><stop offset="1" stop-color="#eef7fd"/>
     </linearGradient>
     <radialGradient id="glow" cx=".5" cy=".5" r=".5">
-      <stop offset="0" stop-color="#f8cd7a" stop-opacity=".8"/><stop offset="1" stop-color="#f8cd7a" stop-opacity="0"/>
+      <stop offset="0" stop-color="#d9ecf9" stop-opacity=".8"/><stop offset="1" stop-color="#d9ecf9" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="gate" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#0c6fae"/><stop offset="1" stop-color="#08334f"/>
@@ -13,14 +13,14 @@
   </defs>
   <rect width="420" height="520" fill="url(#sk)"/>
   <circle cx="328" cy="120" r="130" fill="url(#glow)"/>
-  <path d="M-10 438q215-64 440 0v82H-10z" fill="#fbf8ec" opacity=".92"/>
-  <path d="M-10 474q215-48 440 0v84H-10z" fill="#efe8d4"/>
+  <path d="M-10 438q215-64 440 0v82H-10z" fill="#ffffff" opacity=".92"/>
+  <path d="M-10 474q215-48 440 0v84H-10z" fill="#dfe9f2"/>
   <!-- school gates -->
   <g>
     <path d="M318 214v-84l10 60 12-64 12 78 10 0v-84l8 58 12-44 8 120z" fill="url(#gate)" opacity=".85"/>
     <path d="M300 214h106" stroke="#08334f" stroke-width="6"/>
     <path d="M318 130 328 190M342 126l12 78M366 160l8 26M378 178l8 40" stroke="#08334f" stroke-width="3" opacity=".7"/>
-    <circle cx="382" cy="188" r="4" fill="#f8cd7a" opacity=".9"/>
+    <circle cx="382" cy="188" r="4" fill="#9cc9ea" opacity=".9"/>
   </g>
   <path d="M-10 424q215-40 440 0l-14 18H4z" fill="#0d6fa8" opacity=".16"/>
   <!-- father -->
@@ -47,5 +47,5 @@
     <path d="M240 396c-8-10-20-16-40-16s-36 6-46 16l-4 60c14 8 70 8 96 0l-6-60z" fill="#2f86c4"/>
     <path d="M196 396l-6 56 14 6 8-56z" fill="#0d3050"/>
   </g>
-  <circle cx="212" cy="352" r="5" fill="#f8cd7a"/>
+  <circle cx="212" cy="352" r="5" fill="#9cc9ea"/>
 </svg>

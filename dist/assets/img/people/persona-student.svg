@@ -2,16 +2,16 @@
   <title id="t">A student with a backpack — illustrated, a placeholder for a real photograph</title>
   <defs>
     <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#a9ddf8"/><stop offset=".6" stop-color="#e6f4fd"/><stop offset="1" stop-color="#f5efe0"/>
+      <stop offset="0" stop-color="#a9ddf8"/><stop offset=".6" stop-color="#e6f4fd"/><stop offset="1" stop-color="#eef7fd"/>
     </linearGradient>
     <radialGradient id="glow" cx=".5" cy=".5" r=".5">
-      <stop offset="0" stop-color="#f8cd7a" stop-opacity=".8"/><stop offset="1" stop-color="#f8cd7a" stop-opacity="0"/>
+      <stop offset="0" stop-color="#d9ecf9" stop-opacity=".8"/><stop offset="1" stop-color="#d9ecf9" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="420" height="520" fill="url(#sk)"/>
   <circle cx="86" cy="150" r="130" fill="url(#glow)"/>
-  <path d="M-10 438q215-64 440 0v82H-10z" fill="#fbf8ec" opacity=".92"/>
-  <path d="M-10 474q215-48 430 0v84H-10z" fill="#efe8d4"/>
+  <path d="M-10 438q215-64 440 0v82H-10z" fill="#ffffff" opacity=".92"/>
+  <path d="M-10 474q215-48 430 0v84H-10z" fill="#dfe9f2"/>
   <!-- distant campus -->
   <g fill="#0d5b8c" opacity=".16">
     <rect x="34" y="322" width="52" height="66"/><rect x="92" y="296" width="52" height="92"/>
@@ -40,9 +40,9 @@
     <g fill="#0d3050"><rect x="128" y="446" width="30" height="10" rx="4"/><rect x="298" y="446" width="30" height="10" rx="4"/></g>
     <!-- single accent: homework folder -->
     <g transform="rotate(-10 316 316)">
-      <rect x="306" y="296" width="34" height="42" rx="4" fill="#d9a24b"/>
-      <rect x="306" y="296" width="34" height="42" rx="4" fill="none" stroke="#7c5217" stroke-width="3"/>
-      <path d="M314 308h18M314 316h18M314 324h12" stroke="#7c5217" stroke-width="3" stroke-linecap="round"/>
+      <rect x="306" y="296" width="34" height="42" rx="4" fill="#9cc9ea"/>
+      <rect x="306" y="296" width="34" height="42" rx="4" fill="none" stroke="#0b5f96" stroke-width="3"/>
+      <path d="M314 308h18M314 316h18M314 324h12" stroke="#0b5f96" stroke-width="3" stroke-linecap="round"/>
     </g>
   </g>
 </svg>

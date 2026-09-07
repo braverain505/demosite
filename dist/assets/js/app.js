@@ -47,7 +47,7 @@
       if (toggle) toggle.innerHTML = theme === 'dark' ? sunIcon : moonIcon;
     };
     const stored = load('eis-theme');
-    apply(stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    apply(stored || 'light');
     if (toggle) {
       toggle.addEventListener('click', () => {
         const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';

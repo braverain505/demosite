@@ -2,16 +2,16 @@
   <title id="t">A parent with a child — illustrated, a placeholder for a real photograph</title>
   <defs>
     <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#a8dcf8"/><stop offset=".62" stop-color="#e8f5fe"/><stop offset="1" stop-color="#f3efe1"/>
+      <stop offset="0" stop-color="#a8dcf8"/><stop offset=".62" stop-color="#e8f5fe"/><stop offset="1" stop-color="#eef7fd"/>
     </linearGradient>
     <radialGradient id="glow" cx=".5" cy=".5" r=".5">
-      <stop offset="0" stop-color="#f8cd7a" stop-opacity=".85"/><stop offset="1" stop-color="#f8cd7a" stop-opacity="0"/>
+      <stop offset="0" stop-color="#d9ecf9" stop-opacity=".85"/><stop offset="1" stop-color="#d9ecf9" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="420" height="520" fill="url(#sk)"/>
   <circle cx="322" cy="150" r="120" fill="url(#glow)"/>
-  <path d="M-10 432q215-70 440 0v88H-10z" fill="#fbf8ec" opacity=".92"/>
-  <path d="M-10 472q215-52 440 0v88H-10z" fill="#efe8d4"/>
+  <path d="M-10 432q215-70 440 0v88H-10z" fill="#ffffff" opacity=".92"/>
+  <path d="M-10 472q215-52 440 0v88H-10z" fill="#dfe9f2"/>
   <g fill="none" stroke="#0d6fa8" stroke-width="1.4" opacity=".22">
     <path d="M30 300h110"/><path d="M44 312h94"/><path d="M58 324h78"/>
     <path d="M286 300h100"/><path d="M298 312h86"/>
@@ -36,9 +36,9 @@
     <path d="M120 378c-2-10 3-17 13-19 6 2 10 5 11 9-8 4-19 6-24 10z" fill="#182f52"/>
     <circle cx="136" cy="384" r="10" fill="#8a5a3a"/>
   </g>
-  <path d="M70 316l14 6 74-20-6 3zM156 300l14-6 206 26" fill="none" stroke="#d9a24b" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+  <path d="M70 316l14 6 74-20-6 3zM156 300l14-6 206 26" fill="none" stroke="#9cc9ea" stroke-width="4" stroke-linecap="round" opacity=".8"/>
   <!-- small flower on desk line -->
-  <g fill="#d9a24b" stroke="#d9a24b" stroke-width="3" stroke-linecap="round" opacity=".7">
+  <g fill="#9cc9ea" stroke="#9cc9ea" stroke-width="3" stroke-linecap="round" opacity=".7">
     <path d="M356 338v-24"/><circle cx="356" cy="304" r="7"/>
   </g>
 </svg>
