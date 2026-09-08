@@ -24,25 +24,25 @@
 
   /* ---------- knowledge -------------------------------- */
   const secrets = {
-    program: `<strong>Programmes.</strong> EIS runs the British &amp; Nigerian curricula across four key stages — Nursery &amp; Early Years, Primary (Key Stage 1–2), Junior Secondary (Key Stage 3) and Senior Secondary (Key Stage 4+). See <a href="/learning">Learning &amp; Programmes</a>.`,
-    key: `<strong>Key Stages 1–4.</strong> EIS follows the British &amp; Nigerian curricula from Key Stage 1 through Key Stage 4 — now in its 10th year (founded in 2016).`,
+    program: `<strong>Programmes.</strong> EIS runs the British &amp; Nigerian curricula across four key stages: Nursery &amp; Early Years, Primary (Key Stage 1 to 2), Junior Secondary (Key Stage 3) and Senior Secondary (Key Stage 4+). See <a href="/learning">Learning &amp; Programmes</a>.`,
+    key: `<strong>Key Stages 1 to 4.</strong> EIS follows the British &amp; Nigerian curricula from Key Stage 1 through Key Stage 4, now in its 10th year (founded in 2016).`,
     ages: `<strong>Ages.</strong> Admission begins in Nursery &amp; Early Years and runs through to Senior Secondary (Key Stage 4+).`,
-    hours: `School hours and term dates are set by the academic office each term. <strong>Term dates for 2026–27</strong> are shared with families directly from the school office.`,
-    fees: `<strong>Fees.</strong> Termly fees and the boarding option are confirmed directly by the Admissions Office — they vary by Key Stage. Complete the <a href="/admissions#enquiry">admissions enquiry</a> or message us on WhatsApp and we’ll share the current schedule.`,
+    hours: `School hours and term dates are set by the academic office each term. <strong>Term dates for 2026/27</strong> are shared with families directly from the school office.`,
+    fees: `<strong>Fees.</strong> Termly fees and the boarding option are confirmed directly by the Admissions Office: they vary by Key Stage. Complete the <a href="/admissions#enquiry">admissions enquiry</a> or message us on WhatsApp and we’ll share the current schedule.`,
     admission: `<strong>Admissions</strong> are open across all Key Stages. The journey: enquiry → application → assessment &amp; interview → offer. Start with the short <a href="/admissions">application form</a> on the admissions page.`,
     requirement: `<strong>Requirements.</strong> A completed application form, birth certificate, recent school report (for transfers) and a short assessment booked with the Admissions team.`,
-    boarding: `<strong>Boarding</strong> is available — a “home away from home” with cared-for residential life, dining halls and evening study. Ask the Admissions Office for the boarding schedule.`,
+    boarding: `<strong>Boarding</strong> is available, a “home away from home” with caring residential life, dining halls and evening study. Ask the Admissions Office for the boarding schedule.`,
     transport: `<strong>Transport.</strong> School transport is arranged by the school office; routes are shared with enrolling families. Contact us via <a href="/contact">Contact</a> for the latest routes.`,
     facility: `<strong>Facilities</strong> include three science laboratories, dining and exam halls, libraries, sports grounds and computer rooms. Book a <a href="/admissions#visit">campus visit</a> to see them.`,
     contact: `<strong>Contact.</strong> Shavon Mile 6, Jalingo, Taraba State, Nigeria. Phone &amp; WhatsApp <strong>${P.primary || '+234 803 087 5393'}</strong>, email <strong>${D.email || 'principal@eisjalingo.com'}</strong>.`,
     staff: `<strong>Our people.</strong> Leadership and faculty profiles live on the <a href="/school">About</a> page. Contact the school office for staff enquiries.`,
-    calendar: `<strong>Calendar.</strong> Term dates, open days and exam weeks are shared with families by the school office — ask the office for the current calendar.`,
-    results: `<strong>Results lookup.</strong> Term results are shared with families by the school office — contact the office with the reference from the report card.`,
+    calendar: `<strong>Calendar.</strong> Term dates, open days and exam weeks are shared with families by the school office: ask the office for the current calendar.`,
+    results: `<strong>Results lookup.</strong> Term results are shared with families by the school office: contact the office with the reference from the report card.`,
     uniform: `<strong>Uniform</strong> is required from Primary upwards; prefects wear a distinct uniform. Full details are shared after admission.`,
     house: `<strong>Houses &amp; clubs.</strong> Every pupil belongs to a house and can join clubs including leadership, journalism, science and sports. More on <a href="/school">our school</a>.`,
-    alumni: `<strong>Alumni.</strong> Our first alumni have moved from Primary through to Senior Secondary — now across Nigeria. Reunion events run through the year.`,
-    newsletters: `<strong>Newsletters.</strong> The latest school newsletter is at the top of the <a href="/news#newsletter">News</a> page — uploads are added each term.`,
-    hint: `Want the next step? The Admissions team also runs a WhatsApp walk-through — message <strong>${P.whatsapp || P.primary || 'the office'}</strong> directly.`,
+    alumni: `<strong>Alumni.</strong> Our first alumni have moved from Primary through to Senior Secondary, now across Nigeria. Reunion events run through the year.`,
+    newsletters: `<strong>Newsletters.</strong> The latest school newsletter is at the top of the <a href="/news#newsletter">News</a> page: uploads are added each term.`,
+    hint: `Want the next step? The Admissions team also runs a WhatsApp walkthrough: message <strong>${P.whatsapp || P.primary || 'the office'}</strong> directly.`,
   };
 
   const intents = [

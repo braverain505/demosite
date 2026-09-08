@@ -25,12 +25,12 @@
       label: 'Parent', nav: "I'm a Parent",
       welcome: 'Welcome, Parent.',
       headline: 'Your child’s journey starts here.',
-      intro: 'Everything on campus is arranged around one idea — that every child can learn and succeed. Here is what matters to your family, in the order that matters.',
+      intro: 'Everything on campus is arranged around one idea: that every child can learn and succeed. Here is what matters to your family, in the order that matters.',
       image: { src: '/assets/img/people/persona-parent.svg', alt: 'Parent and child at school' },
       primary: { label: 'Explore Academics', href: '/learning' },
       secondary: { label: 'Newsletter Hub', href: '/news#newsletter' },
       priorities: [
-        ['Academic Programmes', '/learning', 'A British & Nigerian curriculum across Key Stages 1–4, taught by subject specialists.'],
+        ['Academic Programmes', '/learning', 'A British & Nigerian curriculum across Key Stages 1 to 4, taught by subject specialists.'],
         ['Student Development', '/school', 'Pastoral care, prefects and a moral & citizenship core that runs all day.'],
         ['School Newsletters', '/news#newsletter', 'The latest newsletter and notices for families.'],
         ['Contact School', '/contact', 'The office is a call or WhatsApp away.']
@@ -40,8 +40,8 @@
         items: [
           ['Academic depth without pressure', 'Small classes, real subjects and exam practice with a plan.'],
           ['Safety and care, all day', 'A gated campus, supervised breaks and a boarding house run like a home.'],
-          ['Clear, honest communication', 'Results, reports and term dates in one place — the office answers fast.'],
-          ['A community that feels like family', 'Boarding, dining and sport on one campus — families stay and friendships last.']
+          ['Clear, honest communication', 'Results, reports and term dates in one place: the office answers fast.'],
+          ['A community that feels like family', 'Boarding, dining and sport on one campus: families stay and friendships last.']
         ]
       }
     },
@@ -55,7 +55,7 @@
       secondary: { label: 'See What’s On', href: '/news' },
       priorities: [
         ['Academics', '/learning', 'Small classes, subject specialists and exam practice with a plan.'],
-        ['Clubs & Activities', '/news', 'Debate, journalism, chess, science and more — most afternoons.'],
+        ['Clubs & Activities', '/news', 'Debate, journalism, chess, science and more: most afternoons.'],
         ['Arts & Creativity', '/news', 'Music, drama and art through the year.'],
         ['Leadership', '/school#leadership', 'Prefects, house captains and head boys and girls.'],
         ['Events', '/news', 'Open days, science fairs and celebrations.']
@@ -64,7 +64,7 @@
         title: 'A taste of the place',
         chips: [
           'Three real science laboratories', 'Clubs most afternoons',
-          'Inter-house sport', 'Prefects who help you settle in',
+          'Interhouse sport', 'Prefects who help you settle in',
           'Evening study and hot meals', 'Library and quiet lanes',
           'School science fair', 'Football, debate and chess'
         ]
@@ -80,12 +80,12 @@
       secondary: { label: 'Book a School Visit', href: '/admissions#visit' },
       priorities: [
         ['Why EIS', '/school', 'The promise that every child can learn and succeed.'],
-        ['Academic Programmes', '/learning', 'British & Nigerian curricula across Key Stages 1–4.'],
+        ['Academic Programmes', '/learning', 'British & Nigerian curricula across Key Stages 1 to 4.'],
         ['Faculty', '/school#leadership', 'A teaching team led by an experienced head.'],
         ['Admissions Requirements', '/admissions', 'Entry stages and what we ask of families.'],
         ['Admissions Process', '/admissions', 'Four clear steps, from first call to first day.'],
         ['Campus Tour', '/admissions#visit', 'Walk the campus with us on an open day.'],
-        ['Enquiry', '/admissions#enquiry', 'Ask the office anything — even by WhatsApp.'],
+        ['Enquiry', '/admissions#enquiry', 'Ask the office anything: even by WhatsApp.'],
         ['Application', '/admissions#apply', 'Five minutes, end to end.']
       ],
       journey: [

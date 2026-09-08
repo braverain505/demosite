@@ -83,7 +83,7 @@ for (const file of fs.readdirSync(PAGES).filter((f) => f.endsWith('.html'))) {
   if (html.includes('<!--__social__-->')) {
     const SITE = 'https://www.eisjalingo.com';
     const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || 'Excellence International Schools, Jalingo';
-    const desc = (html.match(/name="description"\s+content="([^"]*)"/) || [])[1] || 'A Key Stages 1–4 school in Jalingo, Taraba State, Nigeria, balancing the British and Nigerian curricula.';
+    const desc = (html.match(/name="description"\s+content="([^"]*)"/) || [])[1] || 'A Key Stages 1 to 4 school in Jalingo, Taraba State, Nigeria, balancing the British and Nigerian curricula.';
     const canonical = current === '/' ? `${SITE}/` : `${SITE}${current}`;
     const noindex = /name="robots"\s+content="noindex"/.test(html);
     const image = `${SITE}/assets/img/photo/campus.png`;
