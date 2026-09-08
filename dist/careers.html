@@ -98,8 +98,13 @@
         <a href="/news" data-nav="/news">News</a>
         <a href="/careers" data-nav="/careers" aria-current="page">Careers</a>
         <a href="/contact" data-nav="/contact">Contact</a>
-        <a href="https://cbt.eisjalingo.com" target="_blank" rel="noopener" data-nav-external="https://cbt.eisjalingo.com">CBT <span style="opacity:.5">↗</span></a>
-        <a href="https://webmail.eisjalingo.com" target="_blank" rel="noopener" data-nav-external="https://webmail.eisjalingo.com">Webmail <span style="opacity:.5">↗</span></a>
+        <div class="nav-dd">
+          <button class="nav-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Portals <span class="dd-caret" aria-hidden="true">▾</span></button>
+          <div class="nav-dd-menu" role="menu" aria-label="Portals">
+            <a href="https://cbt.eisjalingo.com" target="_blank" rel="noopener" role="menuitem">CBT Portal <span style="opacity:.5">↗</span></a>
+            <a href="https://webmail.eisjalingo.com" target="_blank" rel="noopener" role="menuitem">Webmail <span style="opacity:.5">↗</span></a>
+          </div>
+        </div>
       </div>
       <div class="nav-actions">
         <button class="icon-btn" id="themeToggle" aria-label="Toggle colour theme" title="Toggle theme"></button>
@@ -130,8 +135,11 @@
     <a class="nav-i" href="/news" data-nav="/news">News &amp; Stories</a>
     <a class="nav-i" href="/careers" data-nav="/careers" aria-current="page">Careers &amp; Team</a>
     <a class="nav-i" href="/contact" data-nav="/contact">Contact</a>
-    <a class="nav-i" href="https://cbt.eisjalingo.com" target="_blank" rel="noopener">CBT Portal <span style="opacity:.5">↗</span></a>
-    <a class="nav-i" href="https://webmail.eisjalingo.com" target="_blank" rel="noopener">Webmail <span style="opacity:.5">↗</span></a>
+    <div class="drawer-group">
+      <span class="drawer-group-lbl">Portals</span>
+      <a class="nav-i" href="https://cbt.eisjalingo.com" target="_blank" rel="noopener">CBT Portal <span style="opacity:.5">↗</span></a>
+      <a class="nav-i" href="https://webmail.eisjalingo.com" target="_blank" rel="noopener">Webmail <span style="opacity:.5">↗</span></a>
+    </div>
     <div class="quick">
       <a class="btn btn--primary btn--block" href="/admissions#apply">Apply now</a>
       <a class="btn btn--secondary btn--block" href="/admissions#visit">Book a visit</a>

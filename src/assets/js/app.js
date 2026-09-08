@@ -67,6 +67,29 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   });
 
+  /* ---------------- nav dropdown (Portals) ---------------- */
+  onReady(() => {
+    $$('.nav-dd').forEach((dd) => {
+      const btn = $('.nav-dd-btn', dd);
+      if (!btn) return;
+      const set = (open) => {
+        dd.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+      };
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        set(!dd.classList.contains('open'));
+      });
+      dd.querySelectorAll('.nav-dd-menu a').forEach((a) => a.addEventListener('click', () => set(false)));
+      document.addEventListener('click', (e) => {
+        if (!dd.contains(e.target)) set(false);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') set(false);
+      });
+    });
+  });
+
   /* ---------------- mobile drawer ---------------- */
   onReady(() => {
     const drawer = $('#jsDrawer');

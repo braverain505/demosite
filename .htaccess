@@ -21,5 +21,10 @@
 # ---- Prevent directory listings ----
 Options -Indexes
 
+# ---- Protect the .env secret file from being downloaded ----
+<FilesMatch "^\.env$">
+  Require all denied
+</FilesMatch>
+
 # ---- Default character set ----
 AddDefaultCharset UTF-8

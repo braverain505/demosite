@@ -27,9 +27,28 @@ if ($question === '' || strlen($question) > 500) {
 
 $apiKey = getenv('GROQ_API_KEY');
 if (!$apiKey || $apiKey === '') {
-    http_response_code(503);
-    echo json_encode(['error' => 'Chat service is not configured.']);
-    exit;
+    // cPanel shared hosting has no way to set environment variables, so also
+    // read from a .env file placed in the same directory as this script.
+    $envFile = __DIR__ . '/.env';
+    if (is_file($envFile)) {
+        $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lines as $line) {
+            $line = trim($line);
+            if ($line === '' || strpos($line, '#') === 0 || strpos($line, '=') === false) {
+                continue;
+            }
+            [$key, $value] = explode('=', $line, 2);
+            if (trim($key) === 'GROQ_API_KEY') {
+                $apiKey = trim($value);
+                break;
+            }
+        }
+    }
+    if (!$apiKey || $apiKey === '') {
+        http_response_code(503);
+        echo json_encode(['error' => 'Chat service is not configured.']);
+        exit;
+    }
 }
 
 $schoolOnlySystemPrompt = <<<'PROMPT'

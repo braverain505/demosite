@@ -14,7 +14,12 @@ import { execSync, execFileSync } from 'node:child_process';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const OUT = path.join(ROOT, 'cpanel-build');
-const ZIP = path.join(ROOT, 'eis-cpanel-build.zip');
+// Unique, timestamped archive name so each cPanel upload is identifiable
+// (e.g. eis-cpanel-build-20260908-1140.zip).
+const pad = (n) => String(n).padStart(2, '0');
+const now = new Date();
+const stamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}`;
+const ZIP = path.join(ROOT, `eis-cpanel-build-${stamp}.zip`);
 
 function copyDir(from, to) {
   fs.mkdirSync(to, { recursive: true });
@@ -64,4 +69,4 @@ try {
 }
 
 console.log(`✓ cpanel build → cpanel-build/  (${ZIP})`);
-console.log('  Upload eis-cpanel-build.zip to cPanel → public_html and extract, or upload the folder contents directly.');
+console.log(`  Upload ${path.basename(ZIP)} to cPanel → public_html and extract, or upload the folder contents directly.`);
