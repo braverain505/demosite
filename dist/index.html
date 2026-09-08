@@ -78,8 +78,6 @@
         <a href="/admissions#visit">Book a visit</a>
         <span style="opacity:.35">·</span>
         <a href="/news#newsletter">Newsletter</a>
-        <span style="opacity:.35">·</span>
-        <span style="color:var(--muted)">10 years of Excellence · est. 2016</span>
       </div>
     </div>
   </div>
@@ -102,8 +100,8 @@
         <div class="nav-dd">
           <button class="nav-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Portals <span class="dd-caret" aria-hidden="true">▾</span></button>
           <div class="nav-dd-menu" role="menu" aria-label="Portals">
-            <a href="https://cbt.eisjalingo.com" target="_blank" rel="noopener" role="menuitem">CBT Portal <span style="opacity:.5">↗</span></a>
-            <a href="https://webmail.eisjalingo.com" target="_blank" rel="noopener" role="menuitem">Webmail <span style="opacity:.5">↗</span></a>
+            <a href="https://cbt.eisjalingo.com" target="_blank" rel="noopener" role="menuitem"><span class="portal-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>CBT Portal</a>
+            <a href="https://webmail.eisjalingo.com" target="_blank" rel="noopener" role="menuitem"><span class="portal-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>Webmail</a>
           </div>
         </div>
       </div>
@@ -138,8 +136,8 @@
     <a class="nav-i" href="/contact" data-nav="/contact">Contact</a>
     <div class="drawer-group">
       <span class="drawer-group-lbl">Portals</span>
-      <a class="nav-i" href="https://cbt.eisjalingo.com" target="_blank" rel="noopener">CBT Portal <span style="opacity:.5">↗</span></a>
-      <a class="nav-i" href="https://webmail.eisjalingo.com" target="_blank" rel="noopener">Webmail <span style="opacity:.5">↗</span></a>
+      <a class="nav-i nav-i--portal" href="https://cbt.eisjalingo.com" target="_blank" rel="noopener"><span class="portal-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>CBT Portal</a>
+      <a class="nav-i nav-i--portal" href="https://webmail.eisjalingo.com" target="_blank" rel="noopener"><span class="portal-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>Webmail</a>
     </div>
     <div class="quick">
       <a class="btn btn--primary btn--block" href="/admissions#apply">Apply now</a>
@@ -470,7 +468,7 @@
         <h2 id="newsTitle">From the courtyard to the exam hall</h2>
       </div>
       <div class="grid grid--3">
-        <a class="card" href="/news#10years" data-reveal>
+        <a class="card" href="/news#story-10years" data-reveal>
           <div class="card-media"><img src="/assets/img/photo/day-5.jpg" alt="Anniversary celebration with banners" loading="lazy" width="1200" height="750"></div>
           <div class="card-body">
             <span class="k" style="text-transform:none;letter-spacing:.14em">19 Sep 2026 · Celebration</span>
@@ -683,6 +681,27 @@
       <div class="lb-big" id="lbBig"></div>
       <p class="lb-cap" id="lbCap"></p>
       <p style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:1rem">Arrow keys to browse · Illustrated views of the campus, in the brand palette.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 10th-anniversary notice — appears once per visit session so the
+     header can stay clean. Dismissing it (or opening it) records the flag. -->
+<div class="modal ann-modal" id="annModal" role="dialog" aria-modal="true" aria-labelledby="annTitle" aria-hidden="true">
+  <div class="modal-bg" data-ann-close aria-hidden="true"></div>
+  <div class="modal-card ann-card">
+    <span class="ann-bar" aria-hidden="true"></span>
+    <button class="modal-close" data-ann-close aria-label="Dismiss the anniversary notice">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="ann-body">
+      <span class="tiny-label ann-tag">Est. 2016 · 19 September 2026</span>
+      <h2 id="annTitle">A decade of Excellence — EIS turns 10</h2>
+      <p>On <strong>19 September 2026</strong> we celebrate ten years of “Everybody can learn &amp; succeed.” The gates open for a reunion week — assemblies, old photographs and prizegiving for every family who has been part of the journey.</p>
+      <div class="ann-actions">
+        <a class="btn btn--primary" href="/news#story-10years">Read the anniversary story <span class="arr" aria-hidden="true">→</span></a>
+        <button class="text-link" type="button" data-ann-close>Not now</button>
+      </div>
     </div>
   </div>
 </div>

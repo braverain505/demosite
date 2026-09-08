@@ -62,8 +62,8 @@
 .nav-dd.open .dd-caret, .nav-dd:hover .dd-caret { transform: rotate(180deg); }
 .nav-dd-menu {
   position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-  min-width: 190px; background: var(--surface); border: 1px solid var(--line-2);
-  border-radius: var(--r-sm); box-shadow: var(--shadow-2); padding: 0.35rem;
+  min-width: 236px; background: var(--surface); border: 1px solid var(--line-2);
+  border-radius: var(--r-md); box-shadow: var(--shadow-2); padding: 0.4rem;
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity 180ms var(--ease), transform 180ms var(--ease), visibility 180ms;
   z-index: 70;
@@ -72,11 +72,18 @@
   opacity: 1; visibility: visible; pointer-events: auto;
 }
 .nav-dd-menu a {
-  position: relative; display: flex; align-items: center; justify-content: space-between;
-  gap: 0.6rem; padding: 0.55rem 0.75rem; font-size: 0.9rem; font-weight: 600;
-  color: var(--ink-2); border-radius: 5px; white-space: nowrap;
+  position: relative; display: flex; align-items: center; justify-content: flex-start;
+  gap: 0.7rem; padding: 0.5rem 0.6rem; font-size: 0.9rem; font-weight: 600;
+  color: var(--ink-2); border-radius: 8px; white-space: nowrap; line-height: 1.2;
 }
 .nav-dd-menu a:hover { background: var(--surface-2); color: var(--green); }
+.nav-dd-menu .portal-ic {
+  width: 32px; height: 32px; flex: none; border-radius: 9px;
+  background: var(--green-soft); color: var(--green);
+  display: grid; place-items: center;
+}
+.nav-dd-menu .portal-ic svg { width: 17px; height: 17px; }
+.nav-dd-menu a:hover .portal-ic { background: var(--green); color: #ffffff; }
 
 .nav-actions { display: flex; align-items: center; gap: 0.6rem; margin-left: 1rem; }
 .icon-btn {
@@ -111,6 +118,14 @@
   display: block; padding: 0.85rem 0.2rem 0.2rem; font-size: 0.68rem;
   letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 700;
 }
+.drawer a.nav-i--portal { justify-content: flex-start; gap: 1rem; }
+.drawer a.nav-i--portal .portal-ic {
+  width: 40px; height: 40px; flex: none; border-radius: 10px;
+  background: var(--green-soft); color: var(--green);
+  display: grid; place-items: center;
+}
+.drawer a.nav-i--portal .portal-ic svg { width: 21px; height: 21px; }
+.drawer a.nav-i--portal:hover .portal-ic { background: var(--green); color: #ffffff; }
 .drawer .quick { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-top: 1.4rem; }
 .drawer .util { margin-top: 1.6rem; display: grid; gap: 0.7rem; color: var(--ink-2); }
 .drawer .util a { color: var(--ink-2); }
@@ -398,6 +413,21 @@ input[type='range'].fee {
 .modal-close { width: 42px; height: 42px; border-radius: 8px; border: 1px solid var(--line-2); background: none; color: var(--ink); display: grid; place-items: center; cursor: pointer; }
 .modal-close svg { width: 20px; height: 20px; }
 .modal-b { overflow: auto; padding: 1.3rem; }
+
+/* anniversary announcement (shown once per visit session) */
+.ann-card { max-width: min(520px, 96vw); }
+.ann-bar {
+  display: block; flex: none; height: 6px; border-radius: var(--r-lg) var(--r-lg) 0 0;
+  background: linear-gradient(90deg, var(--saffron), var(--green-mid), var(--green));
+}
+.ann-modal .modal-bg { background: rgba(4, 16, 28, 0.66); }
+.ann-modal .modal-close { position: absolute; top: 1rem; right: 1rem; z-index: 2; }
+.ann-body { padding: clamp(1.3rem, 3.5vw, 2rem) clamp(1.3rem, 4vw, 2.1rem) clamp(1.6rem, 4vw, 2.2rem); }
+.ann-body h2 { font-size: clamp(1.55rem, 3vw, 2.05rem); margin: 0.7rem 0 0.9rem; }
+.ann-body p { color: var(--ink-2); margin: 0 0 1.4rem; max-width: 46ch; }
+.ann-tag { color: var(--saffron-2); border-color: var(--line-2); background: var(--surface); }
+.ann-actions { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
+.ann-modal.open .ann-card { animation: fadeUp 420ms var(--ease); }
 
 /* lightbox grid */
 .lb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.8rem; }

@@ -281,6 +281,39 @@
     });
   });
 
+  /* ---------------- 10th-anniversary announcement popup ----------------
+     Shown once per visit session (sessionStorage flag) after the page
+     entrance settles, so the header/top area can stay clean. */
+  onReady(() => {
+    const modal = $('#annModal');
+    if (!modal) return;
+    const KEY = 'eis.announce.10years';
+    let seen = false;
+    try { seen = sessionStorage.getItem(KEY) === '1'; } catch (e) { /* private mode */ }
+    if (seen) return;
+    const remember = () => { try { sessionStorage.setItem(KEY, '1'); } catch (e) { /* private mode */ } };
+    const open = () => {
+      modal.classList.add('open');
+      modal.removeAttribute('aria-hidden');
+      document.body.style.overflow = 'hidden';
+      remember();
+      const focusable = $('.ann-card .btn', modal) || $('.modal-close', modal);
+      if (focusable) setTimeout(() => focusable.focus(), 60);
+    };
+    const close = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    $$('[data-ann-close]', modal).forEach((el) => el.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) close();
+    });
+    // wait for the loader / entrance to finish before interrupting
+    const delay = REDUCED ? 200 : 1500;
+    setTimeout(open, delay);
+  });
+
   /* ---------------- pano (360) ---------------- */
   onReady(() => {
     const pano = $('.pano');

@@ -44,6 +44,27 @@
   </div>
 </div>
 
+<!-- 10th-anniversary notice — appears once per visit session so the
+     header can stay clean. Dismissing it (or opening it) records the flag. -->
+<div class="modal ann-modal" id="annModal" role="dialog" aria-modal="true" aria-labelledby="annTitle" aria-hidden="true">
+  <div class="modal-bg" data-ann-close aria-hidden="true"></div>
+  <div class="modal-card ann-card">
+    <span class="ann-bar" aria-hidden="true"></span>
+    <button class="modal-close" data-ann-close aria-label="Dismiss the anniversary notice">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="ann-body">
+      <span class="tiny-label ann-tag">Est. 2016 · 19 September 2026</span>
+      <h2 id="annTitle">A decade of Excellence — EIS turns 10</h2>
+      <p>On <strong>19 September 2026</strong> we celebrate ten years of “Everybody can learn &amp; succeed.” The gates open for a reunion week — assemblies, old photographs and prizegiving for every family who has been part of the journey.</p>
+      <div class="ann-actions">
+        <a class="btn btn--primary" href="/news#story-10years">Read the anniversary story <span class="arr" aria-hidden="true">→</span></a>
+        <button class="text-link" type="button" data-ann-close>Not now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Explore EIS — applied on every page so the chosen perspective
      persists across the site for the current browser session. -->
 <script src="/assets/js/explore.js" defer></script>
