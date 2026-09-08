@@ -3,15 +3,8 @@
    gallery, calendar, results, assistant, footer
    ============================================================ */
 
-/* ---------------- TOP UTILITY + PRIMARY NAV ---------------- */
+/* ---------------- PRIMARY NAV ---------------- */
 .mast { position: sticky; top: 0; z-index: 60; background: var(--paper); }
-.mast-util { border-bottom: 1px solid var(--line); font-size: 0.8rem; }
-.mast-util .wrap { display: flex; justify-content: space-between; gap: 1rem; padding-block: 0.5rem; }
-.mast-util a { color: var(--ink-2); display: inline-flex; align-items: center; gap: 0.4rem; }
-.mast-util a:hover { color: var(--green); }
-.mast-util .u-l { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
-.mast-util .u-r { display: flex; gap: 1.25rem; align-items: center; }
-.mast-util svg { width: 15px; height: 15px; flex: none; }
 
 .nav { border-bottom: 1px solid var(--line); background: var(--paper); transition: box-shadow 240ms var(--ease); }
 .nav.is-stuck { box-shadow: var(--shadow-1); }
@@ -524,8 +517,6 @@ input[type='range'].fee {
   .nav-actions .btn--primary { display: none; }
 }
 @media (max-width: 720px) {
-  .mast-1 .u-r { display: none; }
-  .mast-1 .u-l a:first-child span { display: none; }
   .nav .brand .bt span { display: none; }
   .hero { min-height: 88vh; }
 }

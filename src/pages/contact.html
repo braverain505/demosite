@@ -103,18 +103,32 @@
     </div>
   </section>
 
-  <!-- ============ ADDRESS STRIP ============ -->
-  <section class="section" style="padding-block:clamp(2rem,5vw,3rem)" aria-label="The address">
+  <!-- ============ LOCATION + MAP ============ -->
+  <section class="section" style="padding-block:clamp(2rem,5vw,3rem)" aria-labelledby="findTitle">
     <div class="wrap">
-      <div class="cta-band" data-reveal style="background:var(--green-deep)">
-        <div style="display:grid;gap:1rem;justify-items:start;max-width:720px">
-          <p class="kicker kicker--plain" style="color:#cfdef0">Find us</p>
-          <h2 style="color:#ffffff">Excellence International Schools</h2>
-          <p style="color:#dceaf5;margin:0">Shavon Mile 6, Jalingo,<br>Taraba State, Nigeria.</p>
-          <p style="color:#c9dce9;font-size:.92rem;margin:0">From the Jalingo roundabout, head along the Shavon road about 6 km — the school gate and its sign are unmistakable. The admissions office is the first door on the left after the gate.</p>
-          <div class="hero-cta" style="margin-top:0">
-            <a class="btn btn--paper" href="tel:+2348030875393">Call +234 803 087 5393</a>
-            <a class="btn btn--ghost" href="/admissions#visit" style="color:#fff;border-color:rgba(255,255,255,.4)">Book a visit</a>
+      <div class="split-2" style="align-items:stretch;gap:clamp(1.2rem,3vw,2.2rem)">
+        <div class="cta-band" data-reveal style="background:var(--green-deep)">
+          <div style="display:grid;gap:1rem;justify-items:start;max-width:560px">
+            <p class="kicker kicker--plain" style="color:#cfdef0">Find us</p>
+            <h2 id="findTitle" style="color:#ffffff">Excellence International Schools</h2>
+            <p style="color:#dceaf5;margin:0">Shavon Mile 6, Jalingo,<br>Taraba State, Nigeria.</p>
+            <p style="color:#c9dce9;font-size:.92rem;margin:0">From the Jalingo roundabout, head along the Shavon road about 6 km — the school gate and its sign are unmistakable. The admissions office is the first door on the left after the gate.</p>
+            <div class="hero-cta" style="margin-top:0">
+              <a class="btn btn--paper" href="tel:+2348030875393">Call +234 803 087 5393</a>
+              <a class="btn btn--ghost" href="/admissions#visit" style="color:#fff;border-color:rgba(255,255,255,.4)">Book a visit</a>
+            </div>
+          </div>
+        </div>
+        <div class="map-card" data-reveal style="--d:80ms">
+          <iframe
+            title="Map — Excellence International Schools, Shavon Mile 6, Jalingo, Taraba"
+            src="https://www.google.com/maps?q=Excellence%20International%20Schools%2C%20Shavon%20Mile%206%2C%20Jalingo%2C%20Taraba%2C%20Nigeria&amp;z=15&amp;output=embed"
+            width="600" height="450" style="border:0" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <div class="map-foot">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4.2-3.8-6.8-6.9-6.8-10a6.8 6.8 0 0 1 13.6 0c0 3.1-2.6 6.2-6.8 10z"/><circle cx="12" cy="11" r="2.6"/></svg>
+            <span>Excellence International Schools · Shavon Mile 6, Jalingo</span>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Excellence%20International%20Schools%2C%20Shavon%20Mile%206%2C%20Jalingo%2C%20Taraba%2C%20Nigeria" target="_blank" rel="noopener">Open in Google Maps</a>
           </div>
         </div>
       </div>
