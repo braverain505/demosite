@@ -26,7 +26,7 @@
       welcome: 'Welcome, Parent.',
       headline: 'Your child’s journey starts here.',
       intro: 'Everything on campus is arranged around one idea — that every child can learn and succeed. Here is what matters to your family, in the order that matters.',
-      image: { src: '/assets/img/people/persona-parent.svg', alt: 'Parent and child at school' },
+      image: { src: '/assets/img/photo/day-3.jpg', alt: 'Parent and child at school' },
       primary: { label: 'Explore Academics', href: '/learning' },
       secondary: { label: 'Newsletter Hub', href: '/news#newsletter' },
       priorities: [
@@ -52,7 +52,7 @@
       welcome: 'Welcome, Student.',
       headline: 'Discover your potential.',
       intro: 'A school day built for ambition and curiosity: lessons that stretch you, teams that need you and clubs that make the place feel like yours.',
-      image: { src: '/assets/img/people/persona-student.svg', alt: 'Student carrying a folder at school' },
+      image: { src: '/assets/img/photo/slide3.png', alt: 'Student carrying a folder at school' },
       primary: { label: 'Explore the Campus', href: '/facilities' },
       secondary: { label: 'See What’s On', href: '/news' },
       priorities: [
@@ -80,7 +80,7 @@
       welcome: 'Welcome to EIS.',
       headline: 'Imagine your child here.',
       intro: 'See the school the way a family sees it for the first time: what we believe, what we offer, and the four simple steps from your first call to your child’s first day.',
-      image: { src: '/assets/img/people/persona-prospective.svg', alt: 'Family visiting the school' },
+      image: { src: '/assets/img/photo/slide9.png', alt: 'Family visiting the school' },
       primary: { label: 'Start Your Application', href: '/admissions#apply' },
       secondary: { label: 'Book a School Visit', href: '/admissions#visit' },
       priorities: [
@@ -107,7 +107,7 @@
       welcome: 'Welcome, Educator.',
       headline: 'Grow. Inspire. Make a difference.',
       intro: 'Teaching at EIS is real work and real care: small classes, bright students and a school that puts professional growth on the timetable.',
-      image: { src: '/assets/img/people/persona-teacher.svg', alt: 'Teacher working with students' },
+      image: { src: '/assets/img/photo/slide5.png', alt: 'Teacher working with students' },
       primary: { label: 'Explore Careers', href: '/careers' },
       secondary: { label: 'Meet Our Faculty', href: '/school#leadership' },
       priorities: [
