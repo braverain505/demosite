@@ -282,21 +282,16 @@
   });
 
   /* ---------------- 10th-anniversary announcement popup ----------------
-     Shown once per visit session (sessionStorage flag) after the page
-     entrance settles, so the header/top area can stay clean. */
+     Shows on every page load for the anniversary run-up (no once-per-session
+     gate), after the page entrance settles, so the header/top area can stay
+     clean. Dismissing it only closes it for the current page view. */
   onReady(() => {
     const modal = $('#annModal');
     if (!modal) return;
-    const KEY = 'eis.announce.10years';
-    let seen = false;
-    try { seen = sessionStorage.getItem(KEY) === '1'; } catch (e) { /* private mode */ }
-    if (seen) return;
-    const remember = () => { try { sessionStorage.setItem(KEY, '1'); } catch (e) { /* private mode */ } };
     const open = () => {
       modal.classList.add('open');
       modal.removeAttribute('aria-hidden');
       document.body.style.overflow = 'hidden';
-      remember();
       const focusable = $('.ann-card .btn', modal) || $('.modal-close', modal);
       if (focusable) setTimeout(() => focusable.focus(), 60);
     };

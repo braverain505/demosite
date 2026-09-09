@@ -10,18 +10,22 @@ async function check(name, fn) {
   try { await fn(); console.log(`[${name}] ✓`); }
   catch (e) { console.log(`[${name}] ✗ ${e.message.split('\n')[0]}`); }
 }
-await check('drawer open/close', async () => {
+await check('nav tabs visible (vertical, no hamburger)', async () => {
   await page.goto(`http://localhost:${PORT}/`, { waitUntil: 'networkidle' });
-  const d = page.locator('#jsDrawer');
-  await page.click('#jsMenuOpen');
-  await page.waitForTimeout(400);
-  if (await d.getAttribute('aria-hidden') !== 'false') throw new Error('aria-hidden != false when open');
-  if (await d.getAttribute('inert') !== null) throw new Error('inert not removed when open');
-  if (!(await d.evaluate((el) => el.classList.contains('is-open')))) throw new Error('drawer not open');
-  await page.keyboard.press('Escape');
-  await page.waitForTimeout(400);
-  if (await d.getAttribute('aria-hidden') !== 'true') throw new Error('aria-hidden != true when closed');
-  if (await d.getAttribute('inert') === null) throw new Error('inert not restored when closed');
+  const links = page.locator('.nav-links');
+  const state = await links.evaluate((el) => {
+    const s = getComputedStyle(el);
+    const r = el.getBoundingClientRect();
+    return { display: s.display, height: r.height, toggleVisible: !!document.querySelector('#jsMenuOpen') && getComputedStyle(document.querySelector('#jsMenuOpen')).display !== 'none' };
+  });
+  if (state.display === 'none' || state.height === 0) throw new Error('nav links hidden on mobile');
+  if (state.toggleVisible) throw new Error('hamburger toggle still shown');
+  // Portals dropdown still opens inline
+  const dd = page.locator('.nav-dd');
+  await page.click('.nav-dd-btn');
+  await page.waitForTimeout(300);
+  if (!(await dd.evaluate((el) => el.classList.contains('open')))) throw new Error('portals dropdown did not open');
+  if (await page.locator('.nav-dd-menu').evaluate((el) => getComputedStyle(el).visibility) !== 'visible') throw new Error('portals menu not visible');
 });
 await check('accordion toggle', async () => {
   await page.goto(`http://localhost:${PORT}/admissions`, { waitUntil: 'networkidle' });

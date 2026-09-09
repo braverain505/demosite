@@ -61,7 +61,7 @@
   <nav class="nav" aria-label="Primary">
     <div class="wrap">
       <a class="brand" href="/" data-nav="/" aria-current="page" aria-label="Excellence International Schools home">
-        <img src="/assets/img/photo/eislogo.png" alt="EIS logo" class="mark" aria-hidden="true" width="52" height="52">
+        <img src="/assets/img/photo/eislogo.webp" alt="EIS logo" class="mark" aria-hidden="true" width="52" height="52">
         <span class="bt">
           <b>Excellence International</b>
           <span>Schools · Jalingo · Taraba</span>
@@ -96,7 +96,7 @@
 <div class="drawer" id="jsDrawer" aria-hidden="true" inert>
   <div class="drawer-head">
     <a class="brand" href="/" data-nav="/" aria-current="page">
-      <img src="/assets/img/photo/eislogo.png" alt="EIS logo" class="mark" aria-hidden="true" width="52" height="52">
+      <img src="/assets/img/photo/eislogo.webp" alt="EIS logo" class="mark" aria-hidden="true" width="52" height="52">
       <span class="bt"><b>Excellence International</b><span>Schools · Jalingo</span></span>
     </a>
     <button class="icon-btn" id="jsMenuClose" aria-label="Close menu">
@@ -139,23 +139,33 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="hero hero--slides" aria-labelledby="heroTitle">
+  <!-- ============ HERO — campus slideshow (image only) ============ -->
+  <section class="hero hero--slides" aria-label="A rotating view of campus life at Excellence International Schools">
     <div class="hero-media hero-slides" aria-hidden="true">
-      <img class="hero-slide" src="/assets/img/photo/slide1.png" alt="" fetchpriority="high" width="1200" height="800">
-      <img class="hero-slide" src="/assets/img/photo/slide2.jpg" alt="" loading="lazy" width="1200" height="800">
-      <img class="hero-slide" src="/assets/img/photo/slide3.png" alt="" loading="lazy" width="1200" height="800">
-      <img class="hero-slide" src="/assets/img/photo/slide4.png" alt="" loading="lazy" width="1200" height="800">
-      <img class="hero-slide" src="/assets/img/photo/slide5.png" alt="" loading="lazy" width="1200" height="800">
-      <img class="hero-slide" src="/assets/img/photo/slide7.jpg" alt="" loading="lazy" width="1200" height="800">
-      <img class="hero-slide" src="/assets/img/photo/slide8.png" alt="" loading="lazy" width="1200" height="800">
-      <img class="hero-slide" src="/assets/img/photo/slide9.png" alt="" loading="lazy" width="1200" height="800">
-      <img class="hero-slide" src="/assets/img/photo/slide11.png" alt="" loading="lazy" width="1200" height="800">
+      <img class="hero-slide" src="/assets/img/photo/slide1.webp" alt="" fetchpriority="high" width="1200" height="800">
+      <img class="hero-slide" src="/assets/img/photo/slide2.webp" alt="" width="1200" height="800" style="animation-delay: 5s">
+      <img class="hero-slide" src="/assets/img/photo/slide3.webp" alt="" width="1200" height="800" style="animation-delay: 10s">
+      <img class="hero-slide" src="/assets/img/photo/slide5.webp" alt="" width="1200" height="800" style="animation-delay: 15s">
+      <img class="hero-slide" src="/assets/img/photo/slide7.webp" alt="" width="1200" height="800" style="animation-delay: 20s">
+      <img class="hero-slide" src="/assets/img/photo/slide8.webp" alt="" width="1200" height="800" style="animation-delay: 25s">
+      <img class="hero-slide" src="/assets/img/photo/slide9.webp" alt="" width="1200" height="800" style="animation-delay: 30s">
+      <img class="hero-slide" src="/assets/img/photo/slide11.webp" alt="" width="1200" height="800" style="animation-delay: 35s">
+      <img class="hero-slide" src="/assets/img/photo/slide1b.webp" alt="" width="1200" height="800" style="animation-delay: 40s">
+      <img class="hero-slide" src="/assets/img/photo/facilityboarding.webp" alt="" width="1200" height="800" style="animation-delay: 45s">
+      <img class="hero-slide" src="/assets/img/photo/CHR_3827.webp" alt="" width="1200" height="800" style="animation-delay: 50s">
+      <img class="hero-slide" src="/assets/img/photo/DSC_2423.webp" alt="" width="1200" height="800" style="animation-delay: 55s">
+      <img class="hero-slide" src="/assets/img/photo/DSC_2437.webp" alt="" width="1200" height="800" style="animation-delay: 60s">
+      <img class="hero-slide" src="/assets/img/photo/DSC_2478.webp" alt="" width="1200" height="800" style="animation-delay: 65s">
+      <img class="hero-slide" src="/assets/img/photo/first.webp" alt="" width="1200" height="800" style="animation-delay: 70s">
     </div>
-    <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="wrap hero-inner" data-reveal>
-      <p class="kicker hero-kicker">Jalingo · Taraba · Now in our 10th year</p>
+  </section>
+
+  <!-- ============ HERO — lead copy beneath the photos ============ -->
+  <section class="hero-lede" aria-labelledby="heroTitle">
+    <div class="wrap" data-reveal>
+      <p class="kicker">Jalingo · Taraba · Now in our 10th year</p>
       <h1 id="heroTitle">Everybody can learn &amp; succeed.</h1>
-      <p>A British &amp; Nigerian curriculum from Nursery to Senior Secondary, with day and boarding, in the heart of Taraba, since 19 September 2016.</p>
+      <p class="lead">A British &amp; Nigerian curriculum from Nursery to Senior Secondary, with day and boarding, in the heart of Taraba, since 19 September 2016.</p>
       <div class="hero-cta">
         <a class="btn btn--primary btn--lg" href="/admissions">Begin admissions <span class="arr" aria-hidden="true">→</span></a>
         <a class="btn btn--secondary btn--lg" href="/school">Explore our school</a>
@@ -184,7 +194,7 @@
         <div class="pz-selector" id="pzSelector" role="group" aria-label="Choose who you are">
           <div class="pz-grid">
             <button type="button" class="pz-card" data-persona="parent" aria-pressed="false">
-              <span class="pz-media"><img src="/assets/img/photo/day-3.jpg" alt="" width="420" height="520" loading="eager"></span>
+              <span class="pz-media"><img src="/assets/img/photo/day-3.webp" alt="" width="420" height="520" loading="eager"></span>
               <span class="pz-body">
                 <span class="pz-eyebrow">For parents</span>
                 <span class="pz-name">I&rsquo;m a Parent</span>
@@ -194,7 +204,7 @@
               </span>
             </button>
             <button type="button" class="pz-card" data-persona="student" aria-pressed="false">
-              <span class="pz-media"><img src="/assets/img/photo/slide3.png" alt="" width="420" height="520" loading="eager"></span>
+              <span class="pz-media"><img src="/assets/img/photo/slide3.webp" alt="" width="420" height="520" loading="eager"></span>
               <span class="pz-body">
                 <span class="pz-eyebrow">For students</span>
                 <span class="pz-name">I&rsquo;m a Student</span>
@@ -204,7 +214,7 @@
               </span>
             </button>
             <button type="button" class="pz-card" data-persona="prospective" aria-pressed="false">
-              <span class="pz-media"><img src="/assets/img/photo/slide9.png" alt="" width="420" height="520" loading="eager"></span>
+              <span class="pz-media"><img src="/assets/img/photo/slide9.webp" alt="" width="420" height="520" loading="eager"></span>
               <span class="pz-body">
                 <span class="pz-eyebrow">New here</span>
                 <span class="pz-name">I&rsquo;m a Prospective Parent</span>
@@ -214,7 +224,7 @@
               </span>
             </button>
             <button type="button" class="pz-card" data-persona="teacher" aria-pressed="false">
-              <span class="pz-media"><img src="/assets/img/photo/slide5.png" alt="" width="420" height="520" loading="eager"></span>
+              <span class="pz-media"><img src="/assets/img/photo/slide5.webp" alt="" width="420" height="520" loading="eager"></span>
               <span class="pz-body">
                 <span class="pz-eyebrow">For educators</span>
                 <span class="pz-name">I&rsquo;m a Teacher</span>
@@ -266,7 +276,7 @@
       </div>
       <div class="grid grid--4" style="grid-template-columns:repeat(auto-fit,minmax(255px,1fr))">
         <a class="card" href="/learning#nursery" data-reveal>
-          <div class="card-media"><img src="/assets/img/photo/sc-nursery.jpg" alt="The nursery building and early years playground" loading="lazy" width="1200" height="800"></div>
+          <div class="card-media"><img src="/assets/img/photo/sc-nursery.webp" alt="The nursery building and early years playground" loading="lazy" width="1200" height="800"></div>
           <div class="card-body">
             <span class="k">Nursery &amp; Early Years</span>
             <h3>Ages 2 to 5</h3>
@@ -276,7 +286,7 @@
         </a>
         <a class="card" href="/learning#primary" data-for="parent" data-reveal style="--d:60ms">
           <span class="pz-tag">For you</span>
-          <div class="card-media"><img src="/assets/img/photo/sc-primary.jpg" alt="A Primary classroom" loading="lazy" width="1200" height="800"></div>
+          <div class="card-media"><img src="/assets/img/photo/sc-primary.webp" alt="A Primary classroom" loading="lazy" width="1200" height="800"></div>
           <div class="card-body">
             <span class="k">Primary · KS1 &amp; KS2</span>
             <h3>Ages 5 to 11</h3>
@@ -286,7 +296,7 @@
         </a>
         <a class="card" href="/learning#jss" data-for="parent student" data-reveal style="--d:120ms">
           <span class="pz-tag">For you</span>
-          <div class="card-media"><img src="/assets/img/photo/sc-jss.jpg" alt="Junior secondary students working in the science lab" loading="lazy" width="1200" height="800"></div>
+          <div class="card-media"><img src="/assets/img/photo/sc-jss.webp" alt="Junior secondary students working in the science lab" loading="lazy" width="1200" height="800"></div>
           <div class="card-body">
             <span class="k">Junior Secondary · KS3</span>
             <h3>Ages 11 to 14</h3>
@@ -296,7 +306,7 @@
         </a>
         <a class="card" href="/learning#sss" data-for="student" data-reveal style="--d:180ms">
           <span class="pz-tag">For you</span>
-          <div class="card-media"><img src="/assets/img/photo/sc-sss.jpg" alt="Senior secondary students during assembly" loading="lazy" width="1200" height="800"></div>
+          <div class="card-media"><img src="/assets/img/photo/sc-sss.webp" alt="Senior secondary students during assembly" loading="lazy" width="1200" height="800"></div>
           <div class="card-body">
             <span class="k">Senior Secondary · KS4+</span>
             <h3>Ages 14 to 18</h3>
@@ -329,7 +339,7 @@
           </div>
         </div>
         <figure class="figure-banner" data-reveal style="--d:120ms">
-          <img src="/assets/img/photo/aeriel.png" alt="Aerial view of the EIS campus" loading="lazy" width="1200" height="800">
+          <img src="/assets/img/photo/aeriel.webp" alt="Aerial view of the EIS campus" loading="lazy" width="1200" height="800">
         </figure>
       </div>
     </div>
@@ -360,7 +370,7 @@
       <div class="grid grid--3">
         <figure class="card card--plain" data-for="student parent" data-reveal>
           <span class="pz-tag">For you</span>
-          <div class="card-media"><img src="/assets/img/photo/aeriel.png" alt="Morning drop-off at the gates" loading="lazy" width="1200" height="750"></div>
+          <div class="card-media"><img src="/assets/img/photo/aeriel.webp" alt="Morning drop-off at the gates" loading="lazy" width="1200" height="750"></div>
           <figcaption class="card-body" style="padding:1rem 0.2rem">
             <time class="k" datetime="08:00">08:00 · Arrival</time>
             <h3>Morning gates</h3>
@@ -368,7 +378,7 @@
           </figcaption>
         </figure>
         <figure class="card card--plain" data-reveal style="--d:80ms">
-          <div class="card-media"><img src="/assets/img/photo/day-2.jpg" alt="Morning assembly" loading="lazy" width="1200" height="750"></div>
+          <div class="card-media"><img src="/assets/img/photo/day-2.webp" alt="Morning assembly" loading="lazy" width="1200" height="750"></div>
           <figcaption class="card-body" style="padding:1rem 1.4rem 1.4rem">
             <h3>Assembly &amp; lessons</h3>
             <p>Assembly, then subject lessons through to break: science in the labs from Primary, and plenty of questions asked.</p>
@@ -376,7 +386,7 @@
         </figure>
         <figure class="card card--plain" data-for="student parent" data-reveal style="--d:160ms">
           <span class="pz-tag">For you</span>
-          <div class="card-media"><img src="/assets/img/photo/day-4.jpg" alt="Afternoon games on the field" loading="lazy" width="1200" height="750"></div>
+          <div class="card-media"><img src="/assets/img/photo/day-4.webp" alt="Afternoon games on the field" loading="lazy" width="1200" height="750"></div>
           <figcaption class="card-body" style="padding:1rem 1.4rem 1.5rem">
             <div class="k">Clubs &amp; games</div>
             <h3>After the bell</h3>
@@ -446,7 +456,7 @@
       </div>
       <div class="grid grid--3">
         <a class="card" href="/news#story-10years" data-reveal>
-          <div class="card-media"><img src="/assets/img/photo/day-5.jpg" alt="Anniversary celebration with banners" loading="lazy" width="1200" height="750"></div>
+          <div class="card-media"><img src="/assets/img/photo/day-5.webp" alt="Anniversary celebration with banners" loading="lazy" width="1200" height="750"></div>
           <div class="card-body">
             <span class="k" style="text-transform:none;letter-spacing:.14em">19 Sep 2026 · Celebration</span>
             <h3>A decade of Excellence: EIS turns 10</h3>
@@ -456,7 +466,7 @@
         </a>
         <a class="card" href="/news#open-day" data-for="prospective" data-reveal style="--d:.07s">
           <span class="pz-tag">For you</span>
-          <div class="card-media"><img src="/assets/img/photo/fac-campus.jpg" alt="Open day on the campus walk" loading="lazy" width="1200" height="900"></div>
+          <div class="card-media"><img src="/assets/img/photo/fac-campus.webp" alt="Open day on the campus walk" loading="lazy" width="1200" height="900"></div>
           <div class="card-body">
             <span class="k" style="text-transform:none;letter-spacing:.14em">26 Sep 2026 · Open day</span>
             <h3>Admissions open day: meet the classrooms, labs and halls</h3>
@@ -466,7 +476,7 @@
         </a>
         <a class="card" href="/news#science-fair" data-for="teacher" data-reveal style="--d:.14s">
           <span class="pz-tag">For you</span>
-          <div class="card-media"><img src="/assets/img/photo/fac-lab.jpg" alt="Science fair exhibits in the lab" loading="lazy" width="1200" height="900"></div>
+          <div class="card-media"><img src="/assets/img/photo/fac-lab.webp" alt="Science fair exhibits in the lab" loading="lazy" width="1200" height="900"></div>
           <div class="card-body">
             <span class="k" style="text-transform:none;letter-spacing:.14em">12 Jun 2026 · STEM</span>
             <h3>Pupils light up the annual science fair, again</h3>
@@ -570,7 +580,7 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="/">
-          <img src="/assets/img/photo/eislogo.png" alt="EIS logo" class="mark" aria-hidden="true" width="52" height="52">
+          <img src="/assets/img/photo/eislogo.webp" alt="EIS logo" class="mark" aria-hidden="true" width="52" height="52">
           <span class="bt"><b style="color:#ffffff">Excellence International</b><span>Schools · Jalingo · Taraba</span></span>
         </a>
         <p>Everybody can learn and succeed, a Key Stages 1 to 4 school balancing the British &amp; Nigerian curricula, in the heart of Taraba.</p>
@@ -662,8 +672,8 @@
   </div>
 </div>
 
-<!-- 10th-anniversary notice — appears once per visit session so the
-     header can stay clean. Dismissing it (or opening it) records the flag. -->
+<!-- 10th-anniversary notice — shows on every page load during the
+     anniversary run-up. Dismissing it closes it for the current page view. -->
 <div class="modal ann-modal" id="annModal" role="dialog" aria-modal="true" aria-labelledby="annTitle" aria-hidden="true">
   <div class="modal-bg" data-ann-close aria-hidden="true"></div>
   <div class="modal-card ann-card">
