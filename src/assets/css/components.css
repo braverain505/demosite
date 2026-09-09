@@ -8,7 +8,7 @@
 
 .nav { border-bottom: 1px solid var(--line); background: var(--paper); transition: box-shadow 240ms var(--ease); }
 .nav.is-stuck { box-shadow: var(--shadow-1); }
-.nav .wrap { display: flex; align-items: center; gap: 1.6rem; padding-block: 0.8rem; }
+.nav .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 1.6rem; row-gap: 0.35rem; padding-block: 0.8rem; }
 
 .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--ink); flex: none; }
 .brand .mark {
@@ -21,45 +21,42 @@
 .brand .bt b { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.02rem; letter-spacing: -0.01em; }
 .brand .bt span { display: block; font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
 
-.nav-links { display: flex; align-items: center; gap: 0.2rem; margin-left: auto; }
+/* Vertical stacked menu at every width: the brand + actions sit on the first
+   row, the links (and Portals) stack full-width beneath them. */
+.nav-links {
+  display: flex; flex-direction: column; align-items: stretch;
+  width: 100%; margin-left: 0; order: 3;
+  border-top: 1px solid var(--line); margin-top: 0.35rem; padding-top: 0.3rem;
+}
 .nav-links a {
   position: relative; padding: 0.55rem 0.8rem; font-size: 0.92rem; font-weight: 600;
-  color: var(--ink-2); border-radius: 6px;
+  color: var(--ink-2); border-radius: 0;
 }
-.nav-links a::after {
-  content: ''; position: absolute; left: 0.8rem; right: 0.8rem; bottom: 0.18rem;
-  height: 2px; background: var(--saffron); transform: scaleX(0); transform-origin: left;
-  transition: transform 240ms var(--ease);
-}
+.nav-links a::after { display: none; }  /* underline sweep is for a horizontal row; stacked links use colour */
 .nav-links a:hover { color: var(--ink); }
 .nav-links a:hover::after, .nav-links a[aria-current='page']::after { transform: scaleX(1); }
 .nav-links a[aria-current='page'] { color: var(--ink); }
 
 /* Portals dropdown (CBT + Webmail) */
-.nav-dd { position: relative; }
+.nav-dd { position: relative; width: 100%; }
 .nav-dd-btn {
-  position: relative; display: inline-flex; align-items: center; gap: 0.3rem;
-  padding: 0.55rem 0.8rem; font-size: 0.92rem; font-weight: 600;
+  position: relative; display: inline-flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 0.55rem 0.8rem; font-size: 0.92rem; font-weight: 600;
   font-family: var(--sans); color: var(--ink-2); background: none; border: 0;
-  border-radius: 6px; cursor: pointer;
+  border-radius: 0; cursor: pointer;
 }
-.nav-dd-btn::after {
-  content: ''; position: absolute; left: 0.8rem; right: 0.8rem; bottom: 0.18rem;
-  height: 2px; background: var(--saffron); transform: scaleX(0); transform-origin: left;
-  transition: transform 240ms var(--ease);
-}
+.nav-dd-btn::after { display: none; }
 .nav-dd:hover .nav-dd-btn, .nav-dd:focus-within .nav-dd-btn, .nav-dd-btn[aria-expanded='true'] { color: var(--ink); }
 .nav-dd:hover .nav-dd-btn::after, .nav-dd:focus-within .nav-dd-btn::after, .nav-dd-btn[aria-expanded='true']::after { transform: scaleX(1); }
 .nav-dd-btn:hover { color: var(--ink); }
 .dd-caret { font-size: 0.62em; opacity: 0.7; transition: transform 200ms var(--ease); }
 .nav-dd.open .dd-caret, .nav-dd:hover .dd-caret { transform: rotate(180deg); }
 .nav-dd-menu {
-  position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-  min-width: 236px; background: var(--surface); border: 1px solid var(--line-2);
-  border-radius: var(--r-md); box-shadow: var(--shadow-2); padding: 0.4rem;
+  position: static; transform: none; width: 100%; min-width: 0;
+  background: var(--surface); box-shadow: none; border: 0; border-radius: 0;
+  padding: 0.2rem 0 0.5rem 0.8rem;
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: opacity 180ms var(--ease), transform 180ms var(--ease), visibility 180ms;
-  z-index: 70;
+  transition: opacity 180ms var(--ease), visibility 180ms;
 }
 .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu, .nav-dd.open .nav-dd-menu {
   opacity: 1; visibility: visible; pointer-events: auto;
@@ -78,7 +75,7 @@
 .nav-dd-menu .portal-ic svg { width: 17px; height: 17px; }
 .nav-dd-menu a:hover .portal-ic { background: var(--green); color: #ffffff; }
 
-.nav-actions { display: flex; align-items: center; gap: 0.6rem; margin-left: 1rem; }
+.nav-actions { display: flex; align-items: center; gap: 0.6rem; margin-left: auto; }
 .icon-btn {
   width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--line-2);
   background: var(--surface); color: var(--ink); display: grid; place-items: center; cursor: pointer;
@@ -88,6 +85,13 @@
 .icon-btn svg { width: 19px; height: 19px; }
 
 .nav-toggle { display: none; }
+
+/* ---------- NAV STYLE TOGGLE ----------
+   Two modes, switched by the #navModeToggle button (persisted in localStorage):
+   · stack (default): every link stays visible, stacked vertically under the brand
+   · menu: the links collapse into the hamburger button and live in the drawer */
+.nav[data-nav-mode='menu'] .nav-links { display: none; }
+.nav[data-nav-mode='menu'] .nav-toggle { display: grid; }
 
 /* ---------- mobile drawer ---------- */
 .drawer {
@@ -501,30 +505,9 @@ input[type='range'].fee {
 @media (max-width: 560px) { .foot-grid { grid-template-columns: 1fr; } }
 
 /* ---------- RESPONSIVE NAV ---------- */
-/* The 8-link inline nav needs the same room the old 7-link nav had; collapse
-   into the drawer below 1260px so laptops never squeeze it. The ≤760 brand-truncate
-   and ≤560 CTA-defers rules below are layered on top and unchanged. */
-@media (max-width: 1260px) {
-  /* tabs stay visible — stacked vertically beneath the brand row instead of
-     hiding inside the hamburger drawer */
-  .nav .wrap { flex-wrap: wrap; row-gap: 0.35rem; }
-  .nav-links {
-    display: flex; flex-direction: column; align-items: stretch;
-    width: 100%; margin-left: 0; order: 3;
-    border-top: 1px solid var(--line); margin-top: 0.35rem; padding-top: 0.3rem;
-  }
-  .nav-links a { border-radius: 0; }
-  .nav-links a::after { display: none; }
-  .nav-dd { width: 100%; }
-  .nav-dd-btn { width: 100%; justify-content: space-between; border-radius: 0; }
-  .nav-dd-btn::after { display: none; }
-  .nav-dd-menu {
-    position: static; transform: none; width: 100%; min-width: 0;
-    box-shadow: none; border: 0; border-radius: 0; padding: 0.2rem 0 0.5rem 0.8rem;
-  }
-  .nav-toggle { display: none; }
-  .nav-actions { margin-left: auto; }
-}
+/* The menu is a vertical stack at every width (see .nav-links above), so no
+   breakpoint-specific nav layout is needed. The ≤760 brand-truncate and
+   ≤720 rules below are layered on top. */
 @media (max-width: 760px) {
   .nav .wrap { gap: 1rem; }
   .nav-actions { gap: 0.4rem; }

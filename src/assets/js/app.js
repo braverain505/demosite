@@ -58,6 +58,30 @@
     }
   });
 
+  /* ---------------- nav mode: always-visible vertical stack vs hamburger drawer ---------------- */
+  const menuIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>`;
+  const stackIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h10"/></svg>`;
+
+  onReady(() => {
+    const nav = $('.nav');
+    const toggle = $('#navModeToggle');
+    if (!nav || !toggle) return;
+    const apply = (mode) => {
+      nav.setAttribute('data-nav-mode', mode);
+      const toMenu = mode === 'stack';
+      toggle.innerHTML = toMenu ? menuIcon : stackIcon;
+      toggle.setAttribute('aria-label', toMenu ? 'Collapse the menu links into a hamburger button' : 'Show all menu links stacked vertically');
+      toggle.setAttribute('title', toMenu ? 'Switch to hamburger menu' : 'Switch to full vertical menu');
+    };
+    const stored = load('eis-nav-mode');
+    apply(stored === 'menu' ? 'menu' : 'stack');
+    toggle.addEventListener('click', () => {
+      const next = nav.getAttribute('data-nav-mode') === 'menu' ? 'stack' : 'menu';
+      apply(next);
+      store('eis-nav-mode', next);
+    });
+  });
+
   /* ---------------- sticky nav ---------------- */
   onReady(() => {
     const nav = $('.nav');

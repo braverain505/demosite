@@ -26,7 +26,7 @@
       welcome: 'Welcome, Parent.',
       headline: 'Your child’s journey starts here.',
       intro: 'Everything on campus is arranged around one idea: that every child can learn and succeed. Here is what matters to your family, in the order that matters.',
-      image: { src: '/assets/img/people/persona-parent.svg', alt: 'Parent and child at school' },
+      image: { src: '/assets/img/photo/first.webp', alt: 'Parent and child at school' },
       primary: { label: 'Explore Academics', href: '/learning' },
       secondary: { label: 'Newsletter Hub', href: '/news#newsletter' },
       priorities: [

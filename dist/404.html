@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/components.css?v=2">
   <link rel="stylesheet" href="/assets/css/extras.css">
   <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -56,7 +56,7 @@
 </div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="mast no-print">
-  <nav class="nav" aria-label="Primary">
+  <nav class="nav" aria-label="Primary" data-nav-mode="stack">
     <div class="wrap">
       <a class="brand" href="/" data-nav="/" aria-label="Excellence International Schools home">
         <img src="/assets/img/photo/eislogo.webp" alt="EIS logo" class="mark" aria-hidden="true" width="52" height="52">
@@ -81,6 +81,7 @@
         </div>
       </div>
       <div class="nav-actions">
+        <button class="icon-btn" id="navModeToggle" aria-label="Collapse the menu links into a hamburger button" title="Menu style: hamburger or full vertical list"></button>
         <button class="icon-btn" id="themeToggle" aria-label="Toggle colour theme" title="Toggle theme"></button>
         <a class="btn btn--primary" href="/admissions" style="padding:.7rem 1.15rem;min-height:0" data-nav="/admissions">Admissions <span class="arr" aria-hidden="true">→</span></a>
         <button class="icon-btn nav-toggle" id="jsMenuOpen" aria-label="Open menu" aria-expanded="false" aria-controls="jsDrawer">
