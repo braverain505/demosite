@@ -8,9 +8,15 @@
 
 .nav { border-bottom: 1px solid var(--line); background: var(--paper); transition: box-shadow 240ms var(--ease); }
 .nav.is-stuck { box-shadow: var(--shadow-1); }
-.nav .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 1.6rem; row-gap: 0.35rem; padding-block: 0.8rem; }
 
-.brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--ink); flex: none; }
+/* Desktop (>900px): single-row horizontal navbar.
+   Brand left, links centre, actions right — all in one flex row. */
+.nav .wrap {
+  display: flex; flex-wrap: nowrap; align-items: center;
+  gap: 0; padding-block: 0; min-height: 70px;
+}
+
+.brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--ink); flex: none; padding-block: 0.6rem; }
 .brand .mark {
   width: 2.45rem; height: 2.45rem; border-radius: 50%;
   background: var(--green); color: #ffffff;
@@ -21,40 +27,53 @@
 .brand .bt b { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.02rem; letter-spacing: -0.01em; }
 .brand .bt span { display: block; font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
 
-/* Vertical stacked menu at every width: the brand + actions sit on the first
-   row, the links (and Portals) stack full-width beneath them. */
+/* Horizontal nav links row — sits between brand and actions */
 .nav-links {
-  display: flex; flex-direction: column; align-items: stretch;
-  width: 100%; margin-left: 0; order: 3;
-  border-top: 1px solid var(--line); margin-top: 0.35rem; padding-top: 0.3rem;
+  display: flex; flex-direction: row; align-items: center;
+  flex: 1 1 auto; min-width: 0;
+  margin-left: 1.2rem; gap: 0;
+  overflow-x: auto; overflow-y: hidden;
+  scrollbar-width: none;           /* hide scrollbar on Firefox */
+  -ms-overflow-style: none;
+  border: none; margin-top: 0; padding-top: 0;
 }
+.nav-links::-webkit-scrollbar { display: none; } /* hide scrollbar on Chrome/Safari */
+
 .nav-links a {
-  position: relative; padding: 0.55rem 0.8rem; font-size: 0.92rem; font-weight: 600;
-  color: var(--ink-2); border-radius: 0;
+  position: relative; padding: 0.55rem 0.75rem; font-size: 0.92rem; font-weight: 600;
+  color: var(--ink-2); border-radius: 0; white-space: nowrap; flex: none;
 }
-.nav-links a::after { display: none; }  /* underline sweep is for a horizontal row; stacked links use colour */
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0.75rem; right: 0.75rem; height: 2px;
+  background: var(--green); transform: scaleX(0); transform-origin: left;
+  transition: transform 240ms var(--ease);
+}
 .nav-links a:hover { color: var(--ink); }
 .nav-links a:hover::after, .nav-links a[aria-current='page']::after { transform: scaleX(1); }
 .nav-links a[aria-current='page'] { color: var(--ink); }
 
-/* Portals dropdown (CBT + Webmail) */
-.nav-dd { position: relative; width: 100%; }
+/* Portals dropdown (CBT + Webmail) — inline, horizontal */
+.nav-dd { position: relative; }
 .nav-dd-btn {
-  position: relative; display: inline-flex; align-items: center; justify-content: space-between;
-  width: 100%; padding: 0.55rem 0.8rem; font-size: 0.92rem; font-weight: 600;
+  position: relative; display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.55rem 0.75rem; font-size: 0.92rem; font-weight: 600;
   font-family: var(--sans); color: var(--ink-2); background: none; border: 0;
-  border-radius: 0; cursor: pointer;
+  border-radius: 0; cursor: pointer; white-space: nowrap;
 }
-.nav-dd-btn::after { display: none; }
+.nav-dd-btn::after {
+  content: ''; position: absolute; bottom: 0; left: 0.75rem; right: 0.75rem; height: 2px;
+  background: var(--green); transform: scaleX(0); transform-origin: left;
+  transition: transform 240ms var(--ease);
+}
 .nav-dd:hover .nav-dd-btn, .nav-dd:focus-within .nav-dd-btn, .nav-dd-btn[aria-expanded='true'] { color: var(--ink); }
 .nav-dd:hover .nav-dd-btn::after, .nav-dd:focus-within .nav-dd-btn::after, .nav-dd-btn[aria-expanded='true']::after { transform: scaleX(1); }
 .nav-dd-btn:hover { color: var(--ink); }
 .dd-caret { font-size: 0.62em; opacity: 0.7; transition: transform 200ms var(--ease); }
 .nav-dd.open .dd-caret, .nav-dd:hover .dd-caret { transform: rotate(180deg); }
 .nav-dd-menu {
-  position: static; transform: none; width: 100%; min-width: 0;
-  background: var(--surface); box-shadow: none; border: 0; border-radius: 0;
-  padding: 0.2rem 0 0.5rem 0.8rem;
+  position: absolute; top: 100%; left: 0; transform: none; min-width: 220px;
+  background: var(--surface); box-shadow: var(--shadow-2); border: 1px solid var(--line); border-radius: var(--r-md);
+  padding: 0.4rem;
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity 180ms var(--ease), visibility 180ms;
 }
@@ -63,7 +82,7 @@
 }
 .nav-dd-menu a {
   position: relative; display: flex; align-items: center; justify-content: flex-start;
-  gap: 0.7rem; padding: 0.5rem 0.6rem; font-size: 0.9rem; font-weight: 600;
+  gap: 0.7rem; padding: 0.55rem 0.7rem; font-size: 0.9rem; font-weight: 600;
   color: var(--ink-2); border-radius: 8px; white-space: nowrap; line-height: 1.2;
 }
 .nav-dd-menu a:hover { background: var(--surface-2); color: var(--green); }
@@ -75,7 +94,8 @@
 .nav-dd-menu .portal-ic svg { width: 17px; height: 17px; }
 .nav-dd-menu a:hover .portal-ic { background: var(--green); color: #ffffff; }
 
-.nav-actions { display: flex; align-items: center; gap: 0.6rem; margin-left: auto; }
+/* Actions (theme toggle, Admissions button) — pushed right */
+.nav-actions { display: flex; align-items: center; gap: 0.6rem; margin-left: auto; flex: none; }
 .icon-btn {
   width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--line-2);
   background: var(--surface); color: var(--ink); display: grid; place-items: center; cursor: pointer;
@@ -84,11 +104,11 @@
 .icon-btn:hover { border-color: var(--green); color: var(--green); }
 .icon-btn svg { width: 19px; height: 19px; }
 
-/* ---------- NAV STYLE TOGGLE ----------
-   On desktop (>900px): every link stays visible, stacked vertically under the brand.
-   On mobile (≤900px): links collapse, the hamburger button opens the drawer. */
+/* ---------- MOBILE NAV (≤900px) ----------
+   Links collapse, hamburger opens the drawer. */
 .nav-toggle { display: none; }
 @media (max-width: 900px) {
+  .nav .wrap { flex-wrap: wrap; min-height: 60px; padding-block: 0.5rem; gap: 0.4rem; }
   .nav-links { display: none; }
   .nav-toggle { display: grid; }
 }
@@ -524,9 +544,8 @@ input[type='range'].fee {
 @media (max-width: 960px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .foot-grid { grid-template-columns: 1fr; } }
 
-/* ---------- RESPONSIVE NAV ---------- */
+/* ---------- RESPONSIVE NAV + MOBILE ---------- */
 @media (max-width: 760px) {
-  .nav .wrap { gap: 1rem; }
   .nav-actions { gap: 0.4rem; }
   .brand { min-width: 0; }
   .brand .bt { min-width: 0; }
