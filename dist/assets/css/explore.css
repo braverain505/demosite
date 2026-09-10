@@ -166,8 +166,12 @@ html[data-persona="teacher"]     [data-for~="teacher"]     > .pz-tag { display: 
 }
 @media (max-width: 620px) {
   .pz-grid { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.8rem; }
-  .pz-media { aspect-ratio: 16 / 8; }
+  .pz-media { aspect-ratio: 16 / 9; }
+  .pz-body { padding: 0.85rem 1rem 1.1rem; }
+  .pz-name { font-size: 1.15rem; }
   .ev { margin-top: 1.6rem; min-height: 0; }
+  .ev-hero { gap: 1.2rem; }
+  .ev-prio ul { grid-template-columns: 1fr; }
 }
 @media (max-width: 380px) {
   .ev-switch { width: 100%; }

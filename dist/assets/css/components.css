@@ -84,14 +84,14 @@
 .icon-btn:hover { border-color: var(--green); color: var(--green); }
 .icon-btn svg { width: 19px; height: 19px; }
 
-.nav-toggle { display: none; }
-
 /* ---------- NAV STYLE TOGGLE ----------
-   Two modes, switched by the #navModeToggle button (persisted in localStorage):
-   · stack (default): every link stays visible, stacked vertically under the brand
-   · menu: the links collapse into the hamburger button and live in the drawer */
-.nav[data-nav-mode='menu'] .nav-links { display: none; }
-.nav[data-nav-mode='menu'] .nav-toggle { display: grid; }
+   On desktop (>900px): every link stays visible, stacked vertically under the brand.
+   On mobile (≤900px): links collapse, the hamburger button opens the drawer. */
+.nav-toggle { display: none; }
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: grid; }
+}
 
 /* ---------- mobile drawer ---------- */
 .drawer {
@@ -167,6 +167,12 @@
 .hero { position: relative; min-height: min(92vh, 900px); display: flex; align-items: flex-end; overflow: hidden; }
 .hero--inner { min-height: 54vh; align-items: center; }
 .hero--slides { min-height: 0; height: auto; aspect-ratio: 3 / 2; }  /* home: image-only band sized to the photos (3:2) so heads are never cropped; copy sits beneath */
+.hero--slides::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
+  background: linear-gradient(transparent, var(--paper));
+  z-index: 2; pointer-events: none;
+}
 .hero-media { position: absolute; inset: 0; }
 .hero-media svg, .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero::after {  /* grain */
@@ -194,6 +200,12 @@
 .hero-proof div { padding: 0.95rem 0.4rem; display: flex; flex-direction: column; gap: 0.2rem; }
 .hero-proof b { font-family: var(--serif); font-size: 1.35rem; color: var(--ink); font-weight: 600; }
 .hero-proof span { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 720px) {
+  .hero-proof { grid-template-columns: repeat(3, 1fr); }
+  .hero-proof div { padding: 0.65rem 0.25rem; }
+  .hero-proof b { font-size: 1.1rem; }
+  .hero-proof span { font-size: 0.62rem; }
+}
 
 /* ---------- HERO SLIDESHOW (home) — even crossfade, every slide gets a slot ---------- */
 /* The cycle lasts 5s × the number of slides (70s for the current 14). Each slide's
@@ -222,6 +234,9 @@
 .hero-lede { position: relative; padding-block: clamp(2.6rem, 5.5vw, 4.4rem) 0; }
 .hero-lede h1 { max-width: 22ch; }
 .hero-lede .lead { margin-bottom: 0; }
+@media (max-width: 720px) {
+  .hero-lede { padding-block: clamp(1.8rem, 4vw, 2.8rem) 0; }
+}
 
 /* ---------- CAMPUS STRIP · auto-scrolling gallery ---------- */
 .strip { position: relative; overflow: hidden; background: var(--paper); }
@@ -305,7 +320,12 @@ table.eis th { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: upperc
 table.eis tr:last-child td { border-bottom: 0; }
 
 /* ---------- TABS ---------- */
-.tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem; }
+.tabs { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.8rem; }
+.tabs .tab-btn { text-align: left; }
+@media (min-width: 720px) {
+  .tabs { flex-direction: row; flex-wrap: wrap; }
+  .tabs .tab-btn { text-align: center; }
+}
 .tab-btn {
   padding: 0.65rem 1.2rem; border-radius: 999px; border: 1px solid var(--line-2);
   background: transparent; color: var(--ink-2); font-weight: 600; cursor: pointer; font-size: 0.9rem;
@@ -505,13 +525,9 @@ input[type='range'].fee {
 @media (max-width: 560px) { .foot-grid { grid-template-columns: 1fr; } }
 
 /* ---------- RESPONSIVE NAV ---------- */
-/* The menu is a vertical stack at every width (see .nav-links above), so no
-   breakpoint-specific nav layout is needed. The ≤760 brand-truncate and
-   ≤720 rules below are layered on top. */
 @media (max-width: 760px) {
   .nav .wrap { gap: 1rem; }
   .nav-actions { gap: 0.4rem; }
-  /* let the long brand name compress instead of pushing the nav off-screen */
   .brand { min-width: 0; }
   .brand .bt { min-width: 0; }
   .brand .bt b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 42vw; }
@@ -519,6 +535,17 @@ input[type='range'].fee {
 @media (max-width: 720px) {
   .nav .brand .bt span { display: none; }
   .hero { min-height: 88vh; }
+  .hero--slides { aspect-ratio: 16 / 10; }
+  .hero--slides::before { height: 60px; }
+  .hero-cta { flex-direction: column; gap: 0.6rem; }
+  .hero-cta .btn { width: 100%; }
+  .grid--3, .grid--4 { gap: 1rem; }
+  .card-body { padding: 1rem 1.1rem 1.2rem; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .cta-band { padding: 1.8rem 1.2rem; }
+  .cta-band h2 { font-size: 1.5rem; }
+  .sec-head { margin-bottom: 1.6rem; }
+  .ask-panel { width: calc(100vw - 1rem); right: 0.5rem; bottom: 5rem; }
 }
 
 /* dash line helpers */
@@ -527,7 +554,7 @@ input[type='range'].fee {
 /* image chips list */
 .row-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; align-items: start; }
 .split-2 { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(1.6rem, 4vw, 3.4rem); align-items: center; }
-@media (max-width: 860px) { .split-2 { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .split-2 { grid-template-columns: 1fr; gap: clamp(1.2rem, 3vw, 2rem); } }
 
 /* check list */
 .checks { list-style: none; padding: 0; margin: 0.4rem 0 1rem; display: grid; gap: 0.65rem; }
