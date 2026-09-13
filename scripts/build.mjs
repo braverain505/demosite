@@ -4,6 +4,7 @@
  * Zero dependencies — pure Node stdlib. Pages live in src/pages, shared shell
  * in src/partials. Change a partial, rebuild, every page picks it up.
  */
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -106,7 +107,50 @@ for (const file of fs.readdirSync(PAGES).filter((f) => f.endsWith('.html'))) {
   out.push(file);
 }
 
+// ---------- cache busting ----------
+// Content-hash every cacheable asset and stamp its URL with ?v=<hash> in each
+// page and stylesheet. A deploy that changes a file changes its URL, so the
+// browser fetches it immediately even though assets are cached for a year; an
+// unchanged file keeps its URL and stays cached. .htaccess keeps the HTML
+// itself revalidated, so visitors always pick up the new references.
+const CACHEABLE = new Set(['.css', '.js', '.json', '.woff', '.woff2', '.png', '.jpg', '.jpeg', '.webp', '.avif', '.svg', '.ico']);
+const ASSET_URL = /\/assets\/[A-Za-z0-9._/-]+\.(?:css|js|json|woff2?|png|jpe?g|webp|avif|svg|ico)/g;
+
+function walk(dir) {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const p = path.join(dir, entry.name);
+    if (entry.isDirectory()) return walk(p);
+    return entry.isFile() ? [p] : [];
+  });
+}
+
+const versions = new Map();
+for (const file of walk(path.join(DIST, 'assets'))) {
+  if (!CACHEABLE.has(path.extname(file).toLowerCase())) continue;
+  const url = '/' + path.relative(DIST, file).split(path.sep).join('/');
+  versions.set(url, createHash('sha1').update(fs.readFileSync(file)).digest('hex').slice(0, 10));
+}
+
+// Strip any hand-written ?v= first, so re-running the build is idempotent and
+// there is exactly one source of truth for the version stamp.
+const stamp = (text) => text
+  .replace(/\?v=[A-Za-z0-9._-]+/g, '')
+  .replace(ASSET_URL, (url) => (versions.has(url) ? `${url}?v=${versions.get(url)}` : url));
+
+let stamped = 0;
+for (const file of walk(DIST)) {
+  const ext = path.extname(file).toLowerCase();
+  if (ext !== '.html' && ext !== '.css') continue;
+  const before = read(file);
+  const after = stamp(before);
+  if (after !== before) {
+    fs.writeFileSync(file, after);
+    stamped++;
+  }
+}
+
 // ---------- report ----------
 console.log(`EIS build → dist/  (${out.length} pages)`);
 out.forEach((f) => console.log('  ·', f));
-console.log('Assets: copied from src/assets → dist/assets');
+console.log(`Assets: copied from src/assets → dist/assets`);
+console.log(`Cache busting: ${versions.size} assets hashed, ${stamped} files stamped with ?v=<hash>`);

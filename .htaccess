@@ -28,3 +28,33 @@ Options -Indexes
 
 # ---- Default character set ----
 AddDefaultCharset UTF-8
+
+# ---- Caching ---------------------------------------------------------------
+# Without this, returning visitors keep a stale stylesheet (and the stale HTML
+# that points at it) after a deploy, so only first-time visitors see a fix.
+# scripts/build.mjs stamps every asset URL with ?v=<content hash>: a changed
+# file gets a changed URL, so versioned assets can be cached hard, while the
+# HTML itself must always revalidate so the new URLs are picked up at once.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Flag asset requests whose URL carries the build hash (?v=…).
+  RewriteCond %{QUERY_STRING} (^|&)v=[A-Za-z0-9._-]+($|&)
+  RewriteRule ^assets/ - [E=EIS_VERSIONED:1]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # HTML: revalidate on every load, so a deploy is live on the next page view.
+  <FilesMatch "\.html?$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header unset Expires
+  </FilesMatch>
+
+  <FilesMatch "\.(css|js|json|woff2?|png|jpe?g|webp|avif|svg|ico)$">
+    # Hash-versioned: the URL changes whenever the file does, so cache it hard.
+    Header set Cache-Control "public, max-age=31536000, immutable" env=EIS_VERSIONED
+    # Unversioned (a hand-typed URL, or an older cached page): short, revalidate.
+    Header set Cache-Control "public, max-age=600, must-revalidate" env=!EIS_VERSIONED
+    Header unset Expires
+  </FilesMatch>
+</IfModule>
